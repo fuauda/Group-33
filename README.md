@@ -1,53 +1,91 @@
-# Group-33
 # MediLink – A Modern Healthcare Management System (MERN Stack)
 
 MediLink is a full-stack healthcare platform built using the MERN stack (MongoDB, Express.js, React.js, Node.js). This project tackles real problems in healthcare like long patient wait times, missing medical history, poor rural access, and untracked medicine stocks.
 
-Our goal is to provide an efficient, accessible, and scalable healthcare system for clinics, hospitals, and underserved communities.
+## Quick Start
 
----
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## Core Features
+### Backend Setup
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-### Appointment Scheduling and Queue Tracking
-Patients can book appointments online, and both patients and doctors can see real-time queue updates. This helps reduce long wait times and crowding in clinics.
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (local or Atlas)
+- Git
 
-### Unified Medical History
-Patients have a digital profile that includes their past visits, prescriptions, and reports. Doctors can securely view this history before and during consultations to offer better care.
+## Project Structure
 
-### Remote Video Consultations
-Patients can consult doctors through video calls without needing to visit the hospital. This is especially useful for rural users or minor follow-ups.
-
-### Pharmacy and Medicine Stock Management
-Pharmacists can track available medicines, monitor expiry dates, and get notified when stocks are low or out. Doctors can also check availability before prescribing.
-
-### Basic Health Record Upload
-Patients and doctors can upload health documents like lab results or prescriptions. All files are securely stored and can be viewed anytime.
-
-### Medicine Availability Locator
-Let users search for a specific medicine and see which nearby pharmacies have it in stock.
-
----
+```
+Group-33/
+├── frontend/          # React + Zustand + Tailwind
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── store/     # Zustand stores
+│   │   └── services/  # API calls
+│   └── package.json
+├── backend/           # Node.js + Express + MongoDB
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── config/
+└── README.md
+```
 
 ## Tech Stack
 
 ### Frontend
-- React.js
-- React Router
-- Tailwind CSS or DaisyUI
-- Axios
-- Context API or Redux for global state
+- React.js with Vite
+- Zustand for state management
+- Tailwind CSS for styling
+- React Router for navigation
+- Axios for API calls
 
 ### Backend
-- Node.js
-- Express.js
+- Node.js with Express.js
 - MongoDB with Mongoose
-- JWT for authentication
+- JWT authentication
 - bcrypt for password hashing
-- Socket.IO for live queue updates
+- CORS enabled
 
-### Tools & Integrations
-- Cloudinary or AWS S3 for file uploads
-- Jitsi or Zoom SDK for video calls
-- Twilio or EmailJS for email/SMS alerts
-- Postman for API testing
+## Environment Variables
+
+Create `.env` file in backend directory:
+```
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/medilink
+JWT_SECRET=your_jwt_secret_key_here
+NODE_ENV=development
+```
+
+## Available Scripts
+
+### Frontend
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+
+### Backend
+- `npm run dev` - Start with nodemon
+- `npm start` - Start production server
+
+## API Endpoints
+
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+- `GET /api/auth/profile` - Get user profile (protected)
+
+## Default Ports
+- Frontend: http://localhost:3000
+- Backend: http://localhost:5000
