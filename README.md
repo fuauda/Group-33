@@ -7,6 +7,7 @@ MediLink is a full-stack healthcare platform built using the MERN stack (MongoDB
 ### Frontend Setup
 ```bash
 cd frontend
+cd medical-link
 npm install
 npm run dev
 ```
