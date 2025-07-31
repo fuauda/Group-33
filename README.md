@@ -24,6 +24,9 @@ Pharmacists can track available medicines, monitor expiry dates, and get notifie
 ### Basic Health Record Upload
 Patients and doctors can upload health documents like lab results or prescriptions. All files are securely stored and can be viewed anytime.
 
+### Medicine Availability Locator
+Let users search for a specific medicine and see which nearby pharmacies have it in stock.
+
 ---
 
 ## Tech Stack
