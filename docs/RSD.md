@@ -146,13 +146,16 @@ MediLink is a full-stack healthcare platform designed to simplify and digitize h
 
 | Name             | Role                       |
 |------------------|----------------------------|
-| Ashenafi Bancha  | Team Lead / Full Stack     |
-| Feruza           | Frontend Developer         |
-| Ihsan            | Backend Developer          |
-| [Add others...]  | Designer / DevOps / etc.   |
+| Ashenafi Bancha  |                            |
+| Fuad Tesfaye     |                            |
+| Muluken Seifu    |                            |
+|Shegitu Shukuri   |                            |
 
+
+                             
 ---
 
 ## 📍 Conclusion
 
 MediLink is designed to transform how healthcare facilities manage patient-doctor interactions. 
+
