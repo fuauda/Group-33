@@ -1,6 +1,25 @@
-# MediLink – A Modern Healthcare Management System (MERN Stack)
+# MediLink – A Modern Healthcare Management System
 
-MediLink is a full-stack healthcare platform built using the MERN stack (MongoDB, Express.js, React.js, Node.js). This project tackles real problems in healthcare like long patient wait times, missing medical history, poor rural access, and untracked medicine stocks.
+## 🚀 Project Overview
+
+**MediLink** is a collaborative full-stack project designed to streamline healthcare services by offering digital tools for appointment booking, medical records, communication, and administration. The system supports multiple user roles including Patients, Doctors, and Admins, and ensures secure and efficient healthcare management. This project tackles real problems in healthcare like long patient wait times, missing medical history, poor rural access, and untracked medicine stocks.
+
+## Key Features
+
+### 👨‍⚕️ Patients
+- Book appointments online
+- View medical records & prescriptions
+- Secure login & profile management
+
+### 🧑‍⚕️ Doctors
+- Manage appointments and schedule
+- Access and update patient records
+- Upload test/lab results
+
+### 🏥 Admins
+- Manage users and permissions
+- Monitor system usage
+- Role-based access control
 
 ## Quick Start
 
