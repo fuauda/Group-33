@@ -2,11 +2,12 @@
 # TASK ONE
                  # HTTP HOMEWORK
 ## 1,What is HTTP?
+
 **HTTP**:
-      - is the shorthand represantation of HyperText Transfer Protocol.
-      - it is an application layer protocol used for transmitting hypertext over the internet.
-      - it is the foundation of data communication for www.
-      - it defines how messages are formatted and transmitted, and servers should respond to various commands.
+- is the shorthand represantation of HyperText Transfer Protocol.
+- it is an application layer protocol used for transmitting hypertext over the internet.
+- it is the foundation of data communication for WWW.
+- it defines how messages are formatted and transmitted, and servers should respond to various commands.
 
 ## 2,HTTP Methods?
 - **GET**=> requests data from a specified resource.
