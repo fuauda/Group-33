@@ -1,111 +1,63 @@
-# MediLink – A Modern Healthcare Management System
+# CommunityConnect – A Civic Engagement and Social Impact Platform
 
 ## 🚀 Project Overview
 
-**MediLink** is a collaborative full-stack project designed to streamline healthcare services by offering digital tools for appointment booking, medical records, communication, and administration. The system supports multiple user roles including Patients, Doctors, and Admins, and ensures secure and efficient healthcare management. This project tackles real problems in healthcare like long patient wait times, missing medical history, poor rural access, and untracked medicine stocks.
+CommunityConnect is a full-stack platform built to bridge the gap between citizens, NGOs, and donors. It empowers communities by simplifying volunteer coordination, promoting donation transparency, and enabling citizens to raise and track local civic issues. This platform directly addresses real-world challenges such as lack of volunteer-matching systems, inaccessible NGOs, opaque donation usage, exclusion of marginalized groups, and the absence of civic reporting tools.
 
 ## Key Features
 
-### 👨‍⚕️ Patients
-- Book appointments online
-- View medical records & prescriptions
-- Secure login & profile management
+### 🧑 Volunteers
+- Discover NGOs based on skills and location
+- Apply for matching opportunities
+- View contribution history and badges
 
-### 🧑‍⚕️ Doctors
-- Manage appointments and schedule
-- Access and update patient records
-- Upload test/lab results
+### 🏢 NGOs
+- Post volunteer needs and project details
+- Receive and manage volunteer applications
+- Maintain a public profile with mission and impact
 
-### 🏥 Admins
-- Manage users and permissions
-- Monitor system usage
-- Role-based access control
+### 💰 Donors
+- Donate with transparency and accountability
+- Track how donations are used
+- Support verified campaigns and NGOs
 
-## Quick Start
+### 🏙 Citizens
+- Report civic issues with geolocation and photos
+- Track issue status and public responses
+- Upvote community problems for visibility
+
+### 🧑‍💼 Admins
+- Approve NGOs and campaigns
+- Oversee reports and issue status
+- Manage users, access control, and content
+
+---
+
+## ⚙️ Quick Start
 
 ### Frontend Setup
 ```bash
 cd frontend
-cd medical-link
 npm install
 npm run dev
-```
 
-### Backend Setup
-```bash
 cd backend
 npm install
 npm run dev
-```
 
-### Prerequisites
-- Node.js (v18+)
-- MongoDB (local or Atlas)
-- Git
 
-## Project Structure
-
-```
-Group-33/
-├── frontend/          # React + Zustand + Tailwind
+community-connect/
+├── frontend/           # React + Zustand + Tailwind CSS
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
-│   │   ├── store/     # Zustand stores
-│   │   └── services/  # API calls
+│   │   ├── store/       # Zustand state stores
+│   │   └── services/    # Axios API calls
 │   └── package.json
-├── backend/           # Node.js + Express + MongoDB
+├── backend/            # Node.js + Express + MongoDB
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
 │   ├── middleware/
 │   └── config/
 └── README.md
-```
-
-## Tech Stack
-
-### Frontend
-- React.js with Vite
-- Zustand for state management
-- Tailwind CSS for styling
-- React Router for navigation
-- Axios for API calls
-
-### Backend
-- Node.js with Express.js
-- MongoDB with Mongoose
-- JWT authentication
-- bcrypt for password hashing
-- CORS enabled
-
-## Environment Variables
-
-Create `.env` file in backend directory:
-```
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/medilink
-JWT_SECRET=your_jwt_secret_key_here
-NODE_ENV=development
-```
-
-## Available Scripts
-
-### Frontend
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-
-### Backend
-- `npm run dev` - Start with nodemon
-- `npm start` - Start production server
-
-## API Endpoints
-
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `GET /api/auth/profile` - Get user profile (protected)
-
-## Default Ports
-- Frontend: http://localhost:3000
-- Backend: http://localhost:5000
