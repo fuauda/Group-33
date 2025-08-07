@@ -108,7 +108,7 @@ return (
                         Engage, Volunteer, Donate, and Transform Your City.
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4 lg:max-w-none max-w-md mx-auto lg:mx-0">
-                        <Link href="#" className="flex items-center justify-center py-3 px-6 border-2 border-transparent shadow-lg bg-blue-600 transition ease-linear hover:bg-blue-800 active:bg-blue-700 text-white rounded-full">
+                        <Link href="/auth/signup" className="flex items-center justify-center py-3 px-6 border-2 border-transparent shadow-lg bg-blue-600 transition ease-linear hover:bg-blue-800 active:bg-blue-700 text-white rounded-full">
                             Get Started
                         </Link>
                     </div>
