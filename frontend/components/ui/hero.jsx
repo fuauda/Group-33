@@ -114,9 +114,9 @@ return (
                     </div>
                     <div className="flex items-center gap-1 gap-x-2 mt-10 justify-center lg:justify-start py-5">
                         <div className="flex items-center -space-x-2">
-                            <Image src="/images/podCast.webp" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
-                            <Image src="/images/podCast.webp" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
-                            <Image src="/images/podCast.webp" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
+                            <Image src="/images/homepage-1.png" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
+                            <Image src="/images/homepage-2.png" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
+                            <Image src="/images/homepage-3.jpg" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
                         </div>
                         <div className="flex flex-col justify-start items-start ">
                             <span className="font-semibold text-lg text-gray-800 dark:text-gray-200">+12k</span>
