@@ -75,16 +75,40 @@ return (
                     </div>
                 </div>
                 <div className="flex items-center lg:hidden">
-                    <button onClick={() => { toggleNavbar() }} aria-label="toggle navbar" className="outline-none border-r border-r-gray-200 dark:border-r-gray-800 pr-3 relative py-3 children:flex">
-                        <span aria-hidden="true" className={`
-                            h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
-                            ${openNavbar ? " rotate-45 translate-y-[0.33rem]" : ""}
-                        `} />
-                        <span aria-hidden="true" className={`
-                            mt-2 h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
-                            ${openNavbar ? " -rotate-45 -translate-y-[0.33rem]" : ""}
-                        `} />
-                    </button>
+
+
+
+
+                        <button
+                            onClick={toggleNavbar}
+                            aria-label="toggle navbar"
+                            className="flex flex-col justify-center items-center cursor-pointer outline-none border-r border-r-gray-200 dark:border-r-gray-800 pr-3 py-3"
+                            >
+                            <span
+                                aria-hidden="true"
+                                className={`
+                                h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
+                                ${openNavbar ? "rotate-45 translate-y-[7px]" : ""}
+                                `}
+                            />
+                            <span
+                                aria-hidden="true"
+                                className={`
+                                h-0.5 w-6 my-1 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
+                                ${openNavbar ? "opacity-0" : ""}
+                                `}
+                            />
+                            <span
+                                aria-hidden="true"
+                                className={`
+                                h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
+                                ${openNavbar ? "-rotate-45 -translate-y-[7px]" : ""}
+                                `}
+                            />
+                            </button>
+
+
+
                 </div>
             </nav>
         </header>
@@ -105,7 +129,7 @@ return (
                         Empower Communities with Civic <span className="bg-clip-text text-transparent bg-gradient-to-br from-teal-600 to-blue-600">Impact!</span>  Your Platform for Change.
                     </h1>
                     <p className="mt-8 text-gray-700 dark:text-gray-300 mx-auto lg:mx-0 max-w-xl">
-                        Engage, Volunteer, Donate, and Transform Your City.
+                        Engage, Volunteer, Donate, and Transform Your Community.
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4 lg:max-w-none max-w-md mx-auto lg:mx-0">
                         <Link href="/auth/signup" className="flex items-center justify-center py-3 px-6 border-2 border-transparent shadow-lg bg-blue-600 transition ease-linear hover:bg-blue-800 active:bg-blue-700 text-white rounded-full">
