@@ -52,7 +52,7 @@ return (
                             <span className="w-3 h-6 rounded-l-full flex bg-blue-600" />
                             <span className="w-3 h-6 rounded-r-full flex bg-teal-400 mt-2" />
                         </span>
-                        <span className="text-lg text-gray-700 dark:text-gray-300">skySoft</span>
+                        <span className="text-lg text-gray-700 dark:text-gray-300">CommunityConnect</span>
                     </Link>
                 </div>
                 <div className={`
@@ -102,11 +102,10 @@ return (
             <div className="relative mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 py-24 lg:py-4 flex flex-col lg:flex-row lg:items-center gap-10">
                 <div className="lg:w-1/2  text-center lg:text-left max-w-2xl md:max-w-3xl mx-auto flex flex-col md-justify-center">
                     <h1 className="font-semibold text-teal-950 dark:text-white font-display text-4xl md:text-5xl lg:text-6xl">
-                        Manage with better <span className="bg-clip-text text-transparent bg-gradient-to-br from-teal-600 to-blue-600">experience</span> your Studio!
+                        Empower Communities with Civic <span className="bg-clip-text text-transparent bg-gradient-to-br from-teal-600 to-blue-600">Impact!</span>  Your Platform for Change.
                     </h1>
                     <p className="mt-8 text-gray-700 dark:text-gray-300 mx-auto lg:mx-0 max-w-xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, beatae omnis ipsa magnam neque
-                        ut
+                        Engage, Volunteer, Donate, and Transform Your City.
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4 lg:max-w-none max-w-md mx-auto lg:mx-0">
                         <Link href="#" className="flex items-center justify-center py-3 px-6 border-2 border-transparent shadow-lg bg-blue-600 transition ease-linear hover:bg-blue-800 active:bg-blue-700 text-white rounded-full">
