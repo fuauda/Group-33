@@ -137,7 +137,7 @@ export default function Faq3() {
   ];
 
   return (
-    (<section className="bg-background relative w-full overflow-hidden py-16">
+    (<section className="bg-background relative w-full overflow-hidden py-16" id="FAQs">
       {/* Decorative elements */}
       <div
         className="bg-primary/5 absolute top-20 -left-20 h-64 w-64 rounded-full blur-3xl" />
@@ -187,7 +187,10 @@ export default function Faq3() {
           </p>
 
           <Link href={"/contact"} className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 font-medium">
-            Contact Support
+          <div id="contact-support" className="flex items-center gap-2">
+              Contact Support
+          </div>
+            
           </Link>
         </motion.div>
       </div>

@@ -5,29 +5,29 @@ import { useState } from 'react'
  
 const navItems = [
 {
-    id: 1,
-    text: "Solutions",
+    id: 0,
+    text: "Get Started",
     link: "#"
+    },
+{
+    id: 1,
+    text: "Services",
+    link: "#services"
 },
 {
     id: 2,
-    text: "Company",
-    link: "#"
+    text: "News",
+    link: "#news"
 },
 {
     id: 3,
-    text: "Plateform",
-    link: "#"
-},
-{
-    id: 4,
-    text: "Ressources",
-    link: "#"
+    text: "FAQs",
+    link: "#FAQs"
 },
 {
     id: 5,
     text: "Contact",
-    link: "#"
+    link: "#contact-support"
 },
 ]
  

@@ -73,7 +73,7 @@ const posts = [
 ]
 const BlogSection = () => {
 return (
-    <section className="py-20">
+    <section className="py-20" id="news">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 space-y-14">
             <div className="text-center max-w-2xl mx-auto space-y-5">
                 <span className="pl-5 relative before:absolute before:w-4 before:h-0.5 before:rounded-md before:left-0 before:top-1/2 before:bg-sky-700 dark:before:bg-sky-600 text-sky-700 dark:text-sky-500">
