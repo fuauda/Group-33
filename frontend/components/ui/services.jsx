@@ -29,27 +29,27 @@ return (
 const services = [
 {
     id: 1,
-    title: "Service name 1",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto deserunt culpa autem",
-    icon: "/images/icons/web-development.svg"
+    title: "Volunteer Match Engine",
+    description: "Easily connect with NGOs and causes based on your skills, location, and passion. Our algorithm ensures you find meaningful opportunities where your time truly matters.",
+    icon: "/images/icons/volunteer-match-engine.jpg"
 },
 {
     id: 2,
-    title: "Service name 2",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto deserunt culpa autem",
-    icon: "/images/icons/seo.svg"
+    title: "Civic Issue Reporter",
+    description: "Raise and track local problems — from potholes to power outages — with photo evidence and real-time status updates. Your voice drives accountability.",
+    icon: "/images/icons/civic-Issue-reporter.png"
 },
 {
     id: 3,
-    title: "Service name 3",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto deserunt culpa autem",
-    icon: "/images/icons/web-development.svg"
+    title: "Transparent Donation Portal",
+    description: "Support verified NGOs with confidence. Our donation system ensures every birr is traceable — from donor to impact.",
+    icon: "/images/icons/transparent-donation-portal.png"
 },
 {
     id: 4,
-    title: "Service name 4",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto deserunt culpa autem",
-    icon: "/images/icons/seo.svg"
+    title: "NGO Collaboration Dashboard",
+    description: "Non-profits can post projects, manage volunteers, and showcase their community impact — all from a unified, user-friendly dashboard.",
+    icon: "/images/icons/ngo-collaboration-dashboard.png"
 },
 ]
  
@@ -65,8 +65,8 @@ return (
                     <h1 className="font-bold text-gray-800 dark:text-white text-3xl">We are here to help with best services
                     </h1>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.</p>
+                <p className="text-gray-700 dark:text-gray-300">At CommunityConnect, we provide powerful tools that strengthen civic engagement, transparency, and local impact. Whether you're a volunteer, NGO, or concerned citizen, we’ve got solutions built for you.
+                    </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
                 {

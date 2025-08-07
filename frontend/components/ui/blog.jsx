@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
  
-const BlogCard = ({ cover, author, published_at, title, sumary }) => {
+const BlogCard = ({ cover, author, published_at, title, sumary,}) => {
 return (
     <div className="bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 px-px rounded-xl">
         <div className="rounded-[11px] bg-gray-200 dark:bg-gray-800 relative">
@@ -36,39 +36,41 @@ return (
     </div>
 )
 }
+
+
 const posts = [
 {
     id: 1,
-    cover: "/images/working-on-housing-project.jpg",
+    cover: "/images/local-communities.jpg",
     author: {
-        avatar: "/images/sidebiew.webp",
-        name: "John Doe",
-        role: "Web Developer"
+        avatar: "/images/avatar-1.avif",
+        name: "Muluken Seifu",
+        role: "Community Organizer"
     },
-    title: "How to Sructure your reactJs Application like a Legend",
-    sumary: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga incidunt nam, nihil earum animi ducimus exercitationem facilis explicabo dicta illum delectus, ipsum cum unde enim deleniti repellat. Ipsum, vitae doloremque.",
+    title: "How Civic Tech Empowers Local Communities",
+    sumary: "Learn how digital platforms are enabling citizens to raise issues, find help, and organize change at the grassroots level.",
 },
 {
     id: 2,
-    cover: "/images/working-on-housing-project.jpg",
+    cover: "/images/transparent-donations.png",
     author: {
-        avatar: "/images/sidebiew.webp",
-        name: "John Doe",
-        role: "Web Developer"
+        avatar: "/images/avatar-3.jpg",
+        name: "Ashenafi Bancha",
+        role: "NGO Founder"
     },
-    title: "How to deploy your JS fullstack app using Vercel and Railway",
-    sumary: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga incidunt nam, nihil earum animi ducimus exercitationem facilis explicabo dicta illum delectus, ipsum cum unde enim deleniti repellat. Ipsum, vitae doloremque.",
+    title: "Why Transparent Donations Matter",
+    sumary: "Discover how donation tracking builds trust between donors, organizations, and communities in Ethiopia.",
 },
 {
     id: 3,
-    cover: "/images/working-on-housing-project.jpg",
+    cover: "/images/volunteer-matching.jpeg",
     author: {
-        avatar: "/images/sidebiew.webp",
-        name: "John Doe",
-        role: "Web Developer"
+        avatar: "/images/avatar-2.png",
+        name: "Fuad Tesfaye",
+        role: "Fullstack Developer"
     },
-    title: "How to deploy your JS fullstack app using Vercel and Railway",
-    sumary: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga incidunt nam, nihil earum animi ducimus exercitationem facilis explicabo dicta illum delectus, ipsum cum unde enim deleniti repellat. Ipsum, vitae doloremque.",
+    title: "Building a Volunteer Matching Engine with Next.js",
+    sumary: "A technical walkthrough of how we built the matchmaking logic for volunteer opportunities using React & Node.js."
 },
 ]
 const BlogSection = () => {

@@ -110,29 +110,29 @@ function FAQItem({
 export default function Faq3() {
   const faqs = [
     {
-      question: 'What makes MVPBlocks unique?',
+      question: 'What is CommunityConnect?',
       answer:
-        "MVPBlocks stands out through its intuitive design, powerful component library, and seamless integration options. We've focused on creating a user experience that combines simplicity with advanced features, all while maintaining excellent performance and accessibility.",
+        "CommunityConnect is a digital platform designed to empower citizens, NGOs, and donors by providing tools for civic issue reporting, volunteer coordination, donation tracking, and community engagement. It bridges the gap between people who want to make a difference and those who need support.",
     },
     {
-      question: 'How can I customize the components?',
+      question: 'Who can use CommunityConnect?',
       answer:
-        'All components are built with Tailwind CSS, making them highly customizable. You can modify colors, spacing, typography, and more by simply adjusting the class names or using our theme variables to match your brand identity.',
+        'Anyone! Whether you\'re a concerned citizen reporting a local issue, an NGO looking for volunteers or funding, or a donor wanting transparency, CommunityConnect is built for you. Local governments and community organizers can also use it for outreach and data insights.',
     },
     {
-      question: 'Do the components work with dark mode?',
+      question: 'How does the volunteer matching engine work?',
       answer:
-        "Yes, all MVPBlocks components are designed to work seamlessly with both light and dark modes. They automatically adapt to your site's theme settings, providing a consistent user experience regardless of the user's preference.",
+        "The volunteer matching engine intelligently connects volunteers with opportunities based on location, interests, skills, and availability. It ensures that organizations get the right help, and volunteers find meaningful ways to contribute.",
     },
     {
-      question: 'How can I get started with MVPBlocks?',
+      question: 'How are donations tracked and made transparent?',
       answer:
-        'You can get started by browsing our component library and copying the code for the components you need. Our documentation provides clear instructions for installation and usage, and you can always reach out to our support team if you need assistance.',
+        'All donations made through CommunityConnect are logged and viewable in real time by donors and NGOs. Each donation is tagged to specific causes or projects, with regular updates and impact reports provided to ensure full transparency.',
     },
     {
-      question: 'Can I use MVPBlocks for commercial projects?',
+      question: 'Is my data safe on the platform?',
       answer:
-        'Absolutely! MVPBlocks is free to use for both personal and commercial projects. There are no licensing fees or attribution requirements—just build and launch your MVP faster than ever before.',
+        'Yes. CommunityConnect prioritizes privacy and data security. All user data is encrypted, and sensitive actions are protected by secure authentication protocols. We do not sell or share personal data with third parties.',
     },
   ];
 
@@ -160,7 +160,7 @@ export default function Faq3() {
             Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground text-sm">
-            Everything you need to know about MVPBlocks
+            Everything you need to know about CommunityConnect
           </p>
         </motion.div>
 
