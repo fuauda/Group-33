@@ -55,18 +55,18 @@ const footerBlocks = [
     items: [
         {
             id: 1,
-            text: "Web design",
-            link: "#"
+            text: "Volunteer Match Engine",
+            link: "#services"
         },
         {
             id: 2,
-            text: "Marketing",
-            link: "#"
+            text: "Civic Issue Reporter",
+            link: "#services"
         },
         {
             id: 3,
-            text: "Web Development",
-            link: "#"
+            text: "Transparent Donation Portal",
+            link: "#services"
         },
     ]
 },
@@ -76,17 +76,17 @@ const footerBlocks = [
     items: [
         {
             id: 1,
-            text: "Unify Tailwind",
+            text: "Civic Issue Reporting Tool",
             link: "#"
         },
         {
             id: 2,
-            text: "Unify Uno",
+            text: "Volunteer Matching System",
             link: "#"
         },
         {
             id: 3,
-            text: "Tailset Builder",
+            text: "Transparent Donation Tracker",
             link: "#"
         },
     ]
@@ -99,18 +99,23 @@ return (
     <footer className="pt-16 md:pt-20 bg-gray-100 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5">
             <div className="w-full text-gray-700 dark:text-gray-300 grid grid-cols-2 lg:grid-cols-4 gap-8 pb-4 border-b border-b-gray-200 dark:border-b-gray-800">
-                <div className="flex">
-                    <Link href="#">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-tr from-blue-800 to-indigo-400 font-bold text-2xl">U</span>
-                        Unify-Ui
-                    </Link>
+                <div className="flex items-center">
+                        <Link href="#" className="flex items-center space-x-2">
+                            {/* Logo */}
+                            <span className="flex">
+                                <span className="w-3 h-6 rounded-l-full bg-blue-600" />
+                                <span className="w-3 h-6 rounded-r-full bg-teal-400 mt-2" />
+                            </span>
+                            {/* Text */}
+                            <span className="font-semibold">CommunityConnect</span>
+                        </Link>
                 </div>
                 <div className="flex items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                     </svg>
-                    <span>Lubumbashi-RDC</span>
+                    <span>Addis Ababa, Ethiopia</span>
                 </div>
                 <div className="flex items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -122,7 +127,7 @@ return (
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
                     </svg>
-                    <span>info@dcssarl</span>
+                    <span>support@communityconnectethiopia.org</span>
                 </div>
             </div>
             <nav className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-10 gap-8 py-10 text-gray-700 dark:text-gray-300">
@@ -136,19 +141,20 @@ return (
                         Subscribe to our newsletter
                     </h1>
                     <p className="max-w-xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores debitis ex temporibus
+                        Stay informed and engaged
+Get updates on civic innovations, volunteer opportunities, and platform upgrades.
                     </p>
                     <form className="grid w-full relative max-w-xl">
                         <div className="flex flex-col gap-3 w-full relative">
                             <input type="email" className="w-full outline-none px-3 py-3 rounded-md bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700" placeholder="johndoe@gmail.com" />
-                            <button className="w-full py-3 sm:py-0 sm:w-max sm:absolute sm:right-1 sm:inset-y-1 px-4 text-sm flex sm:items-center justify-center outline-none bg-blue-600 text-white rounded-md">Subscribe</button>
+                            <button className="w-full py-3 sm:py-0 sm:w-max sm:absolute sm:right-1 sm:inset-y-1 px-4 text-sm flex sm:items-center justify-center outline-none bg-blue-600 text-white rounded-md cursor-pointer">Subscribe</button>
                         </div>
                     </form>
                 </div>
             </nav>
             <div className="w-full flex flex-col md:flex-row gap-4 items-center sm:justify-between py-3 border-t border-gray-200 dark:border-t-gray-800 text-gray-700 dark:text-gray-300">
                 <div className="flex text-center sm:text-left sm:min-w-max">
-                    <p> © 2023 UnifyUI. All right reserved </p>
+                    <p> © {new Date().getFullYear()} CommunityConnect. All right reserved </p>
                 </div>
                 <div className="flex justify-center sm:justify-end w-full gap-3">
                     <a href="#" aria-label="social link" rel="noreferer">
