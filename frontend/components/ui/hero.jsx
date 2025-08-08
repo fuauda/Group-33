@@ -5,29 +5,29 @@ import { useState } from 'react'
  
 const navItems = [
 {
-    id: 1,
-    text: "Solutions",
+    id: 0,
+    text: "Get Started",
     link: "#"
+    },
+{
+    id: 1,
+    text: "Services",
+    link: "#services"
 },
 {
     id: 2,
-    text: "Company",
-    link: "#"
+    text: "News",
+    link: "#news"
 },
 {
     id: 3,
-    text: "Plateform",
-    link: "#"
-},
-{
-    id: 4,
-    text: "Ressources",
-    link: "#"
+    text: "FAQs",
+    link: "#FAQs"
 },
 {
     id: 5,
     text: "Contact",
-    link: "#"
+    link: "#contact-support"
 },
 ]
  
@@ -52,7 +52,7 @@ return (
                             <span className="w-3 h-6 rounded-l-full flex bg-blue-600" />
                             <span className="w-3 h-6 rounded-r-full flex bg-teal-400 mt-2" />
                         </span>
-                        <span className="text-lg text-gray-700 dark:text-gray-300">skySoft</span>
+                        <span className="text-lg text-gray-700 dark:text-gray-300">CommunityConnect</span>
                     </Link>
                 </div>
                 <div className={`
@@ -75,16 +75,40 @@ return (
                     </div>
                 </div>
                 <div className="flex items-center lg:hidden">
-                    <button onClick={() => { toggleNavbar() }} aria-label="toggle navbar" className="outline-none border-r border-r-gray-200 dark:border-r-gray-800 pr-3 relative py-3 children:flex">
-                        <span aria-hidden="true" className={`
-                            h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
-                            ${openNavbar ? " rotate-45 translate-y-[0.33rem]" : ""}
-                        `} />
-                        <span aria-hidden="true" className={`
-                            mt-2 h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
-                            ${openNavbar ? " -rotate-45 -translate-y-[0.33rem]" : ""}
-                        `} />
-                    </button>
+
+
+
+
+                        <button
+                            onClick={toggleNavbar}
+                            aria-label="toggle navbar"
+                            className="flex flex-col justify-center items-center cursor-pointer outline-none border-r border-r-gray-200 dark:border-r-gray-800 pr-3 py-3"
+                            >
+                            <span
+                                aria-hidden="true"
+                                className={`
+                                h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
+                                ${openNavbar ? "rotate-45 translate-y-[7px]" : ""}
+                                `}
+                            />
+                            <span
+                                aria-hidden="true"
+                                className={`
+                                h-0.5 w-6 my-1 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
+                                ${openNavbar ? "opacity-0" : ""}
+                                `}
+                            />
+                            <span
+                                aria-hidden="true"
+                                className={`
+                                h-0.5 w-6 rounded bg-gray-800 dark:bg-gray-200 transition duration-300
+                                ${openNavbar ? "-rotate-45 -translate-y-[7px]" : ""}
+                                `}
+                            />
+                            </button>
+
+
+
                 </div>
             </nav>
         </header>
@@ -102,22 +126,21 @@ return (
             <div className="relative mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 py-24 lg:py-4 flex flex-col lg:flex-row lg:items-center gap-10">
                 <div className="lg:w-1/2  text-center lg:text-left max-w-2xl md:max-w-3xl mx-auto flex flex-col md-justify-center">
                     <h1 className="font-semibold text-teal-950 dark:text-white font-display text-4xl md:text-5xl lg:text-6xl">
-                        Manage with better <span className="bg-clip-text text-transparent bg-gradient-to-br from-teal-600 to-blue-600">experience</span> your Studio!
+                        Empower Communities with Civic <span className="bg-clip-text text-transparent bg-gradient-to-br from-teal-600 to-blue-600">Impact!</span>  Your Platform for Change.
                     </h1>
                     <p className="mt-8 text-gray-700 dark:text-gray-300 mx-auto lg:mx-0 max-w-xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, beatae omnis ipsa magnam neque
-                        ut
+                        Engage, Volunteer, Donate, and Transform Your Community.
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4 lg:max-w-none max-w-md mx-auto lg:mx-0">
-                        <Link href="#" className="flex items-center justify-center py-3 px-6 border-2 border-transparent shadow-lg bg-blue-600 transition ease-linear hover:bg-blue-800 active:bg-blue-700 text-white rounded-full">
+                        <Link href="/auth/signup" className="flex items-center justify-center py-3 px-6 border-2 border-transparent shadow-lg bg-blue-600 transition ease-linear hover:bg-blue-800 active:bg-blue-700 text-white rounded-full">
                             Get Started
                         </Link>
                     </div>
                     <div className="flex items-center gap-1 gap-x-2 mt-10 justify-center lg:justify-start py-5">
                         <div className="flex items-center -space-x-2">
-                            <Image src="/images/podCast.webp" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
-                            <Image src="/images/podCast.webp" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
-                            <Image src="/images/podCast.webp" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
+                            <Image src="/images/homepage-1.png" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
+                            <Image src="/images/homepage-2.png" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
+                            <Image src="/images/homepage-3.jpg" height={1700} width={2250} alt="listener avatar" className="w-10 h-10 object-cover rounded-full ring-4 ring-white dark:ring-gray-950" />
                         </div>
                         <div className="flex flex-col justify-start items-start ">
                             <span className="font-semibold text-lg text-gray-800 dark:text-gray-200">+12k</span>
