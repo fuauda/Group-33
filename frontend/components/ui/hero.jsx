@@ -6,8 +6,8 @@ import { useState } from 'react'
 const navItems = [
 {
     id: 0,
-    text: "Get Started",
-    link: "#"
+    text: "Home",
+    link: "#home"
     },
 {
     id: 1,
@@ -47,7 +47,7 @@ return (
         <header className="sticky top-0 w-full flex items-center h-20 border-b border-b-gray-100 dark:border-b-gray-900 z-40 bg-white/80 dark:bg-gray-950/80 backdrop-filter backdrop-blur-xl">
             <nav className="relative mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 flex gap-x-5 justify-between items-center">
                 <div className="flex items-center min-w-max">
-                    <Link href="#" className="font-semibold flex items-center gap-x-2">
+                    <Link href="#home" className="font-semibold flex items-center gap-x-2">
                         <span className="flex">
                             <span className="w-3 h-6 rounded-l-full flex bg-blue-600" />
                             <span className="w-3 h-6 rounded-r-full flex bg-teal-400 mt-2" />
@@ -69,7 +69,7 @@ return (
                         }
                     </ul>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4  lg:min-w-max mt-10 lg:mt-0">
-                        <Link href="/auth/login" className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-blue-600 text-blue-600 hover:text-white hover:bg-blue-700 dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:hover:bg-gray-950 rounded-full">
+                        <Link href="/auth/login" className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-blue-600 text-blue-600 hover:bg-blue-800 dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:hover:bg-gray-950 rounded-full bg-blue-600 text-white">
                             Login
                         </Link>
                     </div>

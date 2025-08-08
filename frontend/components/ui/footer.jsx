@@ -35,17 +35,17 @@ const footerBlocks = [
         {
             id: 1,
             text: "Home",
-            link: "#"
+            link: "#home"
         },
         {
             id: 2,
             text: "About",
-            link: "#"
+            link: "#about"
         },
         {
             id: 3,
             text: "Contact",
-            link: "#"
+            link: "#contact"
         },
     ]
 },
@@ -146,7 +146,7 @@ Get updates on civic innovations, volunteer opportunities, and platform upgrades
                     </p>
                     <form className="grid w-full relative max-w-xl">
                         <div className="flex flex-col gap-3 w-full relative">
-                            <input type="email" className="w-full outline-none px-3 py-3 rounded-md bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700" placeholder="johndoe@gmail.com" />
+                            <input type="email" className="w-full outline-none px-3 py-3 rounded-md bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700" placeholder="johndoe@gmail.com" required/>
                             <button className="w-full py-3 sm:py-0 sm:w-max sm:absolute sm:right-1 sm:inset-y-1 px-4 text-sm flex sm:items-center justify-center outline-none bg-blue-600 text-white rounded-md cursor-pointer">Subscribe</button>
                         </div>
                     </form>
