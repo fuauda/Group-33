@@ -1,4 +1,4 @@
-# Requirement Specification Document (RSD)
+# Software Requirement Specification(SRS)
 
 ## 📘 Project Name  
 CommunityConnect – A Civic Engagement and Social Impact Platform
@@ -140,3 +140,4 @@ CommunityConnect is a full-stack web platform aimed at strengthening civic engag
 ## 📍 Conclusion
 
 CommunityConnect is a mission-driven platform aimed at empowering communities, increasing civic engagement, and enabling collaboration among NGOs, donors, and citizens. Through transparency, accessibility, and modern tools, it provides the foundation for meaningful social impact.
+
