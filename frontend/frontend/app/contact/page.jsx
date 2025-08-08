@@ -8,7 +8,7 @@ import { Textarea } from "../../components/ui/textarea";
 const Contact2 = ({
   title = "Contact Us",
   description = "We are available for questions, feedback, or collaboration opportunities. Let us know how we can help!",
-  phone = "(+251) 934567890",
+  phone = "(123) 34567890",
   email = "email@example.com",
   web = { label: "shadcnblocks.com", url: "https://shadcnblocks.com" }
 }) => {
@@ -16,16 +16,16 @@ const Contact2 = ({
     <section className="py-32">
       <div className="container">
         <div
-          className="mx-auto flex max-w-7xl flex-col justify-between gap-2 lg:flex-row lg:gap-20">
-          <div className="mx-auto flex max-w-sm flex-col gap-4">
+          className="mx-auto flex max-w-7xl flex-col justify-between gap-10 lg:flex-row lg:gap-20">
+          <div className="mx-auto flex max-w-sm flex-col justify-between gap-10">
             <div className="text-center lg:text-left">
-              <h1 className="mb-1 text-5xl font-semibold lg:mb-1 lg:text-6xl">
+              <h1 className="mb-2 text-5xl font-semibold lg:mb-1 lg:text-6xl">
                 {title}
               </h1>
               <p className="text-muted-foreground">{description}</p>
             </div>
-            <div className="contact-details mx-auto w-fit lg:mx-0 mt-4 ">
-              <h3 className="mb-2 text-center text-2xl font-semibold lg:text-left">
+            <div className="mx-auto w-fit lg:mx-0">
+              <h3 className="mb-6 text-center text-2xl font-semibold lg:text-left">
                 Contact Details
               </h3>
               <ul className="ml-4 list-disc">
@@ -71,7 +71,7 @@ const Contact2 = ({
               <Label htmlFor="message">Message</Label>
               <Textarea placeholder="Type your message here." id="message" />
             </div>
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">Send Message</Button>
+            <Button className="w-full">Send Message</Button>
           </div>
         </div>
       </div>
