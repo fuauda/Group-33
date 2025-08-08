@@ -35,17 +35,17 @@ const footerBlocks = [
         {
             id: 1,
             text: "Home",
-            link: "#"
+            link: "#home"
         },
         {
             id: 2,
             text: "About",
-            link: "#"
+            link: "#about"
         },
         {
             id: 3,
             text: "Contact",
-            link: "#"
+            link: "#contact"
         },
     ]
 },

@@ -6,7 +6,9 @@ export const blogs = [
       "Civic technology (or “civic tech”) bridges the gap between communities and the systems that serve them. It combines digital platforms, open data, and collaborative tools to make local governance more transparent, inclusive, and responsive. Whether it’s reporting issues in the neighborhood, participating in policy discussions, or organizing grassroots initiatives, civic tech empowers citizens to take an active role in shaping their communities.",
     fullDescription:
       `Key Areas of Impact:
+
 1. Online Platforms for Public Input – Town halls are no longer limited to physical spaces. Platforms allow residents to propose ideas, vote on community projects, and give feedback on policy drafts.
+
 2. Crowdsourcing for Problem-Solving – Citizens can submit solutions for local challenges, from environmental clean-ups to traffic safety improvements.
 3. Open Data for Transparency – Governments can publish budget, infrastructure, and service data, enabling watchdog groups and journalists to hold institutions accountable.
 4. Digital Tools for Civic Education – Mobile apps and online resources teach residents about their rights, local laws, and how to engage with officials.
