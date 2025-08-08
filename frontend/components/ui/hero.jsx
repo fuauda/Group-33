@@ -6,8 +6,8 @@ import { useState } from 'react'
 const navItems = [
 {
     id: 0,
-    text: "Get Started",
-    link: "#"
+    text: "Home",
+    link: "#home"
     },
 {
     id: 1,
@@ -47,7 +47,7 @@ return (
         <header className="sticky top-0 w-full flex items-center h-20 border-b border-b-gray-100 dark:border-b-gray-900 z-40 bg-white/80 dark:bg-gray-950/80 backdrop-filter backdrop-blur-xl">
             <nav className="relative mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 flex gap-x-5 justify-between items-center">
                 <div className="flex items-center min-w-max">
-                    <Link href="#" className="font-semibold flex items-center gap-x-2">
+                    <Link href="#home" className="font-semibold flex items-center gap-x-2">
                         <span className="flex">
                             <span className="w-3 h-6 rounded-l-full flex bg-blue-600" />
                             <span className="w-3 h-6 rounded-r-full flex bg-teal-400 mt-2" />
