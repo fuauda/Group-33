@@ -15,3 +15,6 @@ node_modules/
 test-requests.rest
 test-admin-auth.rest
 test-admin-invite-system.rest
+report-api.http
+test-ngos.rest
+API_TESTING_GUIDE.md

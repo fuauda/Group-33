@@ -10,6 +10,7 @@ import { HeroVideoDialogDemoTopInBottomOut } from "../components/ui/vidoe";
 export default function Home() {
   return (
     <>
+    
       <HeroSection />
       < HeroVideoDialogDemoTopInBottomOut />
 
