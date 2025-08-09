@@ -266,7 +266,7 @@ export default function MultiStepForm({
                     className={cn('px-6 py-3 text-lg', step === 0 && 'invisible')}>
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back
                   </Button>
-                  <Button type="submit" disabled={isSubmitting} className="w-full px-8 py-4 text-xl mx-auto">
+                  <Button type="submit" disabled={isSubmitting} className="px-4 py-2 text-base">
                     {step === steps.length - 1 ? (
                       isSubmitting ? (
                         'Submitting...'

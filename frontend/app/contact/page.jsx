@@ -13,19 +13,19 @@ const Contact2 = ({
   web = { label: "shadcnblocks.com", url: "https://shadcnblocks.com" }
 }) => {
   return (
-    <section className="py-32">
+    <section className="py-16">
       <div className="container">
         <div
-          className="mx-auto flex max-w-7xl flex-col justify-between gap-10 lg:flex-row lg:gap-20">
-          <div className="mx-auto flex max-w-sm flex-col justify-between gap-10">
+          className="mx-auto flex max-w-7xl flex-col justify-between gap-4 lg:flex-row lg:gap-6">
+          <div className="mx-auto flex max-w-sm flex-col ">
             <div className="text-center lg:text-left">
               <h1 className="mb-2 text-5xl font-semibold lg:mb-1 lg:text-6xl">
                 {title}
               </h1>
               <p className="text-muted-foreground">{description}</p>
             </div>
-            <div className="mx-auto w-fit lg:mx-0">
-              <h3 className="mb-6 text-center text-2xl font-semibold lg:text-left">
+            <div className="mx-auto w-fit mt-6  lg:mt-8 lg:mx-0">
+              <h3 className="mb-3 text-center text-2xl font-semibold lg:text-left">
                 Contact Details
               </h3>
               <ul className="ml-4 list-disc">
@@ -48,7 +48,7 @@ const Contact2 = ({
               </ul>
             </div>
           </div>
-          <div className="mx-auto flex max-w-3xl flex-col gap-6 rounded-lg border p-10">
+          <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-lg border p-8">
             <div className="flex gap-4">
               <div className="grid w-full items-center gap-1.5">
                 <Label htmlFor="firstname">First Name</Label>
@@ -71,7 +71,7 @@ const Contact2 = ({
               <Label htmlFor="message">Message</Label>
               <Textarea placeholder="Type your message here." id="message" />
             </div>
-            <Button className="w-full">Send Message</Button>
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">Send Message</Button>
           </div>
         </div>
       </div>
