@@ -1,7 +1,9 @@
 "use client"
 import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
+ import Link from 'next/link'
+ import { useState } from 'react'
+ import { Dialog, DialogContent, DialogTrigger, DialogTitle } from './dialog'
+ import Translator from './translator'
  
 const navItems = [
 {
@@ -69,6 +71,17 @@ return (
                         }
                     </ul>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4  lg:min-w-max mt-10 lg:mt-0">
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <button className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-gray-300 text-gray-700 hover:text-white hover:bg-gray-800 dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:hover:bg-gray-800 rounded-full">
+                                    Translate
+                                </button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-xl">
+                                <DialogTitle>Translate</DialogTitle>
+                                <Translator />
+                            </DialogContent>
+                        </Dialog>
                         <Link href="/auth/login" className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-blue-600 text-blue-600 hover:text-white hover:bg-blue-700 dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:hover:bg-gray-950 rounded-full">
                             Login
                         </Link>
