@@ -422,12 +422,14 @@ export default function MultiStepForm({
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back
                   </Button>
+
                   <Button type="submit" disabled={isSubmitting}>
                     {step === visibleSteps.length - 1 ? (
                       <>
                         {isSubmitting ? 'Submitting...' : 'Submit'}
                         {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
                       </>
+
                     ) : (
                       <>
                         Next
