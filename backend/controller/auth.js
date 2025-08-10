@@ -147,7 +147,9 @@ const BlacklistedToken = require('../models/BlacklistedToken');
 
 exports.logout = async (req, res) => {
   try {
-    const token = req.header('x-auth-token');
+    let token = req.header('authorization') || req.header('Authorization');
+    if (token && token.startsWith('Bearer ')) token = token.slice(7).trim();
+    if (!token) token = req.header('x-auth-token');
     if (!token) {
       return res.status(400).json({ msg: 'No token provided' });
     }

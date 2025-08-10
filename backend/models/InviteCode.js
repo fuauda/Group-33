@@ -4,7 +4,6 @@ const inviteCodeSchema = new mongoose.Schema({
   code: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     minlength: 6,
     maxlength: 6
@@ -25,8 +24,8 @@ const inviteCodeSchema = new mongoose.Schema({
   },
   expiresAt: {
     type: Date,
-    default: () => new Date(+new Date() + 77*24*60*60*1000), 
-    index: { expires: 0 } 
+    default: () => new Date(+new Date() + 77*24*60*60*1000),
+    expires: 0
   },
   status: {
     type: String,
@@ -37,7 +36,7 @@ const inviteCodeSchema = new mongoose.Schema({
   timestamps: true
 });
 
-inviteCodeSchema.index({ code: 1, status: 1 });
+// Ensure codes are only unique while 'active'
 
 inviteCodeSchema.pre('save', function(next) {
   if (this.isModified('code')) {
@@ -75,7 +74,10 @@ inviteCodeSchema.statics.updateExpired = async function() {
   );
 };
 
-inviteCodeSchema.index({ code: 1, status: 1 }, { unique: true, partialFilterExpression: { status: 'active' } });
+inviteCodeSchema.index(
+  { code: 1, status: 1 },
+  { unique: true, partialFilterExpression: { status: 'active' } }
+);
 
 const InviteCode = mongoose.model('InviteCode', inviteCodeSchema);
 
