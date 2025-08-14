@@ -6,7 +6,7 @@
 ## 📂 Documentation
 All project-related documents are stored in the [`docs/`](docs/) folder. You can find the following:
 
-- [Project Proposal](docs/project_proposal.md) – Outlines the objectives, scope, and implementation plan.
+- [Project Proposal](docs/project-proposal.md) – Outlines the objectives, scope, and implementation plan.
 
 ## 2. Sector / Industry  
 **Civic Engagement, Social Impact, Nonprofit Technology**  
