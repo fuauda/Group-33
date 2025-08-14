@@ -3,7 +3,7 @@ export const services = [
     id: 1,
     slug: "volunteer-match-engine",
     title: "Volunteer Match Engine",
-    heroImage: "/images/volunteer-matching.jpeg",
+    heroImage: "/images/services/volunteer-matching.jpg",
     about:
       "Our Volunteer Match Engine revolutionizes how organizations connect with passionate volunteers. Using advanced matching, we analyze volunteer profiles, skills, interests, and availability to create perfect matches with meaningful opportunities.",
     details:
@@ -29,7 +29,7 @@ export const services = [
     id: 2,
     slug: "civic-issue-reporter",
     title: "Civic Issue Reporter",
-    heroImage: "/images/civic-issue-reporter.jpeg",
+    heroImage: "/images/services/civic-issue-reporter.jpg",
     about:
       "Our Civic Issue Reporter empowers citizens to raise and track local problems — from potholes to power outages — with photo evidence, location details, and real-time status updates. It bridges the gap between communities and local authorities for faster resolutions.",
     details:
@@ -55,7 +55,7 @@ export const services = [
     id: 3,
     slug: "transparent-donation-portal",
     title: "Transparent Donation Portal",
-    heroImage: "/images/transparent-donation-portal.jpeg",
+    heroImage: "/images/services/transparent-donation-portal.png",
     about:
       "Our Transparent Donation Portal allows donors to support verified NGOs with complete confidence. Every birr is traceable — from the moment it’s donated to the moment it’s spent — ensuring accountability and trust.",
     details:
@@ -81,7 +81,7 @@ export const services = [
     id: 4,
     slug: "ngo-collaboration-dashboard",
     title: "NGO Collaboration Dashboard",
-    heroImage: "/images/ngo-collaboration-dashboard.jpeg",
+    heroImage: "/images/services/ngo-collaboration-dashboard.jpg",
     about:
       "Our NGO Collaboration Dashboard enables non-profits to post projects, manage volunteers, and showcase their community impact — all from a unified, user-friendly platform designed for efficiency and transparency.",
     details:
