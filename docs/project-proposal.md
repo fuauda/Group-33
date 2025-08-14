@@ -12,7 +12,7 @@
 
 
 ## Executive Summary
-
+CommunityConnect is a full-stack platform designed to bridge the gap between citizens, NGOs, and donors. It empowers communities by simplifying volunteer coordination, ensuring donation transparency, and enabling citizens to report and track local civic issues. The platform addresses real-world challenges such as the absence of efficient volunteer-matching systems, inaccessible NGO information, opaque donation usage, and the exclusion of marginalized groups from civic participation.
 
 
 
