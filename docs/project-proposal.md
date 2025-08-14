@@ -26,10 +26,10 @@ Communities lack:
 - Inclusive participation for marginalized groups.
 
 ## Objective
-
-
-
-
+- **Empower communities** by connecting citizens, NGOs, and donors.  
+- **Promote transparency** in donations and civic engagement.  
+- **Encourage active participation** from marginalized and underrepresented groups.  
+- **Facilitate real-time reporting** and resolution of civic issues.  
 
 ## Proposed Solution
 CommunityConnect will:
@@ -46,7 +46,7 @@ CommunityConnect will:
 - Civic issue reporting and progress tracking.
 - Role-based admin controls.
 
-## Technologies
+## Technologies(MERN Stack)
 - **Frontend:** React/Next.js + Tailwind CSS
 - **Backend:** Node.js + Express
 - **Database:** MongoDB
