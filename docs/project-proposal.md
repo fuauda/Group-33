@@ -1,5 +1,8 @@
 # Project Proposal — CommunityConnect
 
+## Title Page
+### Project Title: CommunityConnect
+                                 ### Team Members
 ## Objective
 Build a full-stack platform connecting **citizens, NGOs, and donors** to improve volunteer coordination, ensure donation transparency, and enable civic issue reporting.
 
