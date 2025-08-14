@@ -7,6 +7,7 @@
 All project-related documents are stored in the [`docs/`](docs/) folder. You can find the following:
 
 - [Project Proposal](docs/project-proposal.md) – Outlines the objectives, scope, and implementation plan.
+- [Software Requirement Specfication/SRS](docs/SRS.md) – Description of a software system that clearly defines its functional requirements, non-functional requirements, use cases, system behavior, constraints,
 - [System Design](docs/system-architect.md) – Includes architecture diagrams and technical details.
 
 ## 2. Sector / Industry  
