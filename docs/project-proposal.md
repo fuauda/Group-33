@@ -2,9 +2,20 @@
 
 ## Title Page
 ### Project Title: CommunityConnect
-                                 ### Team Members
-## Objective
-Build a full-stack platform connecting **citizens, NGOs, and donors** to improve volunteer coordination, ensure donation transparency, and enable civic issue reporting.
+### Team Members
+| #  | Name                | Role                 | Contact           |
+|----|-------------------|-------------------|-----------------|
+| 1  | Ashenafi Bancha|Documentation and Backend   |           |
+| 2  |Fuad Tesfaye Mamo| Backend          |                 |
+| 3  | Muluken Seifu|  Fronted             |                  |
+| 4  | Shegitu Shukuri| Frontend                |             |
+
+
+## Executive Summary
+
+
+
+
 
 ## Problem Statement
 Communities lack:
@@ -13,6 +24,12 @@ Communities lack:
 - Accessible NGO information.
 - Civic reporting tools for local issues.
 - Inclusive participation for marginalized groups.
+
+## Objective
+
+
+
+
 
 ## Proposed Solution
 CommunityConnect will:
