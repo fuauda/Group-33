@@ -1,13 +1,9 @@
-// File: data.js
-
 export const services = [
   {
     id: 1,
     slug: "volunteer-match-engine",
     title: "Volunteer Match Engine",
-    // This path is for the small homepage icon. The file should be in /public/images/icons/
     icon: "/images/icons/volunteer-match-engine-icon.png", 
-    // This path is for the large hero image. The file should be in /public/images/
     heroImage: "/images/hero-volunteer-match-engine.jpg",
     about: "Connect with NGOs, campaigns, and community initiatives that match your skills, interests, and location. Our smart matching system ensures your time and talents create the greatest possible impact.",
     details: "The Volunteer Match Engine makes it simple for organizations and volunteers to connect meaningfully. NGOs can post opportunities with clear requirements, while volunteers create detailed profiles highlighting their skills, causes they care about, and real-time availability. Our matching technology then links the right people to the right causes.",
@@ -32,9 +28,7 @@ export const services = [
     id: 2,
     slug: "civic-issue-reporter",
     title: "Civic Issue Reporter",
-    // This path is for the small homepage icon. The file should be in /public/images/icons/
     icon: "/images/icons/civic-issue-reporter-icon.png", 
-    // This path is for the large hero image. The file should be in /public/images/
     heroImage: "/images/hero-civic-issue-reporter.jpg",
     about: "Report and track local problems — from potholes to power outages — with photos, GPS location, and real-time updates. Your voice drives action and accountability.",
     details: "The Civic Issue Reporter empowers citizens to take an active role in improving their communities. Users can report civic problems by attaching photos, location data, and detailed descriptions. Reports are tracked through resolution, and the community can upvote issues to bring more attention to urgent needs.",
@@ -58,9 +52,7 @@ export const services = [
     id: 3,
     slug: "transparent-donation-portal",
     title: "Transparent Donation Portal",
-    // This path is for the small homepage icon. The file should be in /public/images/icons/
     icon: "/images/icons/transparent-donation-icon.png", 
-    // This path is for the large hero image. The file should be in /public/images/
     heroImage: "/images/hero-transparent-donation.jpg",
     about: "Support verified NGOs and campaigns with confidence. Every birr you give is traceable from donor to impact, ensuring complete transparency.",
     details: "Our Transparent Donation Portal lets donors contribute to verified NGOs and campaigns while tracking exactly how their funds are used. Every donation is logged, and impact reports keep donors informed from the moment they give until the final outcome.",
@@ -84,9 +76,7 @@ export const services = [
     id: 4,
     slug: "ngo-collaboration-dashboard",
     title: "NGO Collaboration Dashboard",
-    // This path is for the small homepage icon. The file should be in /public/images/icons/
     icon: "/images/icons/ngo-collaboration-dashboard-icon.png",
-    // This path is for the large hero image. The file should be in /public/images/
     heroImage: "/images/hero-ngo-collaboration-dashboard.jpg",
     about: "Empower NGOs with a centralized hub to post projects, manage volunteers, track donations, and showcase their community impact.",
     details: "The NGO Collaboration Dashboard provides non-profits with powerful tools to manage all aspects of their work in one place. Organizations can post opportunities, accept volunteer applications, track donations, generate impact reports, and share results with their community.",
