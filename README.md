@@ -46,21 +46,7 @@ All project-related documents are stored in the [`docs/`](docs/) folder. You can
 - [Software Requirement Specfication/SRS](docs/SRS.md) – Description of a software system that clearly defines its functional requirements, non-functional requirements, use cases, system behavior, constraints,
 - [System Design](docs/system-architect.md) – Includes architecture diagrams and technical details.
 
-## 9. 
-
-
-
-
-
-
-## 10. Next Steps / Support Needed  
-- **Backend Development**:  
-- **Frontend Implementation**: Build responsive user interfaces based on wireframes.    
-- **Support Needed**: Technical volunteers with **security** practices
-- Support for **testing** such as unit testing, integration testing, and automated end-to-end testing using tools like **Jest** 
-
-
-## ⚙️ Quick Start
+## 9. ⚙️ Quick Start
 
 ### Frontend Setup
 ```bash
@@ -88,3 +74,34 @@ community-connect/
 │   ├── middleware/
 │   └── config/
 └── README.md
+
+```
+
+## 10. 📝 Future Enhancements
+
+- AI-based NGO recommendations for volunteers and donors
+- Multilingual support for local and marginalized communities
+- SMS-based civic issue reporting for offline users
+- Integration with government or municipality systems
+- Analytics dashboard for NGOs and Admins
+
+## 11. 📅 Timeline
+
+| Task                        | Deadline        |
+|----------------------------|---------------   |
+| Requirement Gathering       | Week 1          |
+| Frontend Development        | Week 2–3        |
+| Backend API & DB Integration| Week 3–4        |
+| Testing & Bug Fixing        | Week 5-7        |
+| Final Deployment & Demo     | Week 8          |
+
+## 12. 👨‍💻 Team Roles
+
+| Name             | Role                     |
+|------------------|--------------------------|
+|    |   |
+|    | 
+|    |   |
+|    | 
+
+
