@@ -158,30 +158,6 @@ CommunityConnect is a web platform built with the MERN stack that enables commun
 
 ---
 
-
-
-
-
-
-
-
-
-## 💻 System Requirements
-
-### Client (Frontend)
-- React.js with Vite
-- Tailwind CSS
-- Zustand for state management
-- Axios for API communication
-- React Router for navigation
-
-### Server (Backend)
-- Node.js with Express.js
-- MongoDB with Mongoose
-- JWT for authentication
-- bcrypt for password hashing
-- CORS for cross-origin requests
-
 ## 🧪 Acceptance Criteria
 
 - All users can authenticate securely and access only permitted data
@@ -192,34 +168,12 @@ CommunityConnect is a web platform built with the MERN stack that enables commun
 - Admins can monitor and control the platform with full permissions
 - All features pass functional and security tests before deployment
 
-## 📝 Future Enhancements
 
-- AI-based NGO recommendations for volunteers and donors
-- Multilingual support for local and marginalized communities
-- SMS-based civic issue reporting for offline users
-- Integration with government or municipality systems
-- Analytics dashboard for NGOs and Admins
-
-## 📅 Timeline
-
-| Task                        | Deadline      |
-|----------------------------|---------------|
-| Requirement Gathering       | Week 1        |
-| Frontend Development        | Week 2–3      |
-| Backend API & DB Integration| Week 3–4      |
-| Testing & Bug Fixing        | Week 5        |
-| Final Deployment & Demo     | Week 6        |
-
-## 👨‍💻 Team Roles
-
-| Name             | Role                     |
-|------------------|--------------------------|
-| Fuad Tesfaye     | Full-Stack Developer     |
-| [Add other names]| [Define their roles]     |
 
 ## 📍 Conclusion
 
 CommunityConnect is a mission-driven platform aimed at empowering communities, increasing civic engagement, and enabling collaboration among NGOs, donors, and citizens. Through transparency, accessibility, and modern tools, it provides the foundation for meaningful social impact.
+
 
 
 
