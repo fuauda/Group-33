@@ -83,6 +83,17 @@
 - **Message Queues** (Future Enhancement):
   - For processing media uploads or donation confirmations asynchronously
 
+
+
+    ## 🔄 External Interfaces
+
+| Interface         | Description                                                  |
+|------------------|--------------------------------------------------------------|
+| File Storage      | Firebase for media uploads (e.g., civic issue photos)        |
+| Database          | MongoDB for user data, issues, donations, and NGOs          |
+| Hosting           | Vercel (frontend), Railway or Heroku (backend)              |
+| API Testing       | Postman collections for verifying all routes and logic       |
+
 ---
 
 ## Summary
