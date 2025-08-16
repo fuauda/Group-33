@@ -3,12 +3,7 @@
 ## 1. Project Name  
 **CommunityConnect**  
 
-## 📂 Documentation
-All project-related documents are stored in the [`docs/`](docs/) folder. You can find the following:
 
-- [Project Proposal](docs/project-proposal.md) – Outlines the objectives, scope, and implementation plan.
-- [Software Requirement Specfication/SRS](docs/SRS.md) – Description of a software system that clearly defines its functional requirements, non-functional requirements, use cases, system behavior, constraints,
-- [System Design](docs/system-architect.md) – Includes architecture diagrams and technical details.
 
 ## 2. Sector / Industry  
 **Civic Engagement, Social Impact, Nonprofit Technology**  
@@ -44,17 +39,19 @@ CommunityConnect offers an **integrated digital platform** where:
 - **Citizens** aiming to raise and track civic concerns.  
 - **Local governments and administrators** interested in streamlined civic issue tracking.  
 
-## 8. Current Progress 
-- Setting up GitHub repository
-- Drafting the **SRS (Software Requirements Specification)** document. 
-- Core platform features designed for volunteers, NGOs, donors, and citizens.  
--
--
-## 9. Challenges / Roadblocks  
--   
--   
--   
--  
+## 8. 📂 Documentation
+All project-related documents are stored in the [`docs/`](docs/) folder. You can find the following:
+
+- [Project Proposal](docs/project-proposal.md) – Outlines the objectives, scope, and implementation plan.
+- [Software Requirement Specfication/SRS](docs/SRS.md) – Description of a software system that clearly defines its functional requirements, non-functional requirements, use cases, system behavior, constraints,
+- [System Design](docs/system-architect.md) – Includes architecture diagrams and technical details.
+
+## 9. 
+
+
+
+
+
 
 ## 10. Next Steps / Support Needed  
 - **Backend Development**:  
