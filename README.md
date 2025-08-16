@@ -1,9 +1,7 @@
-# CommunityConnect – A Civic Engagement and Social Impact Platform
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## 1. Project Name  
 **CommunityConnect**  
-
-
 
 ## 2. Sector / Industry  
 **Civic Engagement, Social Impact, Nonprofit Technology**  
@@ -47,18 +45,7 @@ All project-related documents are stored in the [`docs/`](docs/) folder. You can
 - [System Design](docs/system-architect.md) – Includes architecture diagrams and technical details.
 
 ## 9. ⚙️ Quick Start
-
-### Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev
-
-cd backend
-npm install
-npm run dev
-
-
+```bash 
 community-connect/
 ├── frontend/           # React + Zustand + Tailwind CSS
 │   ├── src/
@@ -103,6 +90,5 @@ community-connect/
 | 2  |Fuad Tesfaye Mamo| Backend          |                 |
 | 3  | Muluken Seifu|  Fronted             |                  |
 | 4  | Shegitu Shukuri| Frontend                |             |
-
 
 
