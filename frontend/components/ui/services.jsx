@@ -1,4 +1,4 @@
-const ServiceCard = ({ title, description, icon }) => {
+const ServiceCard = ({ title, description, icon, id }) => {
 return (
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 p-5 xl:p-7 hover:cursor-default rounded-lg bg-gray-100 dark:bg-gray-900  group transition duration-300 z-20 hover:z-30 shadow-md shadow-transparent hover:shadow-gray-100/40 dark:hover:shadow-transparent border border-transparent hover:border-gray-200 dark:hover:border-gray-800 hover:-translate-y-2 overflow-hidden relative">
         <div className="absolute w-40 h-10 rounded-full border-8 border-sky-600/20 dark:border-sky-500/30 blur-md -z-10 -top-1 right-5 rotate-45" />
@@ -16,8 +16,8 @@ return (
             <p className="text-gray-700 dark:text-gray-300 text-justify line-clamp-3">
                 {description}
             </p>
-            <a href="#" className="text-sky-700 dark:text-sky-400 flex items-center gap-x-3 w-max">
-                Get a quota
+            <a href={`/services/${id}`} className="text-sky-700 dark:text-sky-400 flex items-center gap-x-3 w-max">
+                Get quote
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                     <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd" />
                 </svg>

@@ -1,38 +1,44 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Admin = require('../models/Admin');
+const BlacklistedToken = require('../models/BlacklistedToken');
 
 // Middleware to verify JWT token
-exports.verifyToken = (req, res, next) => {
-  // Get token from header
-  const token = req.header('x-auth-token');
+exports.verifyToken = async (req, res, next) => {
+  // Prefer Authorization: Bearer <token>, fallback to x-auth-token
+  let token = req.header('authorization') || req.header('Authorization');
+  if (token && token.startsWith('Bearer ')) {
+    token = token.slice(7).trim();
+  } else if (!token) {
+    token = req.header('x-auth-token');
+  }
 
-  // Check if no token
   if (!token) {
-    return res.status(401).json({ 
+    return res.status(401).json({
       success: false,
-      error: 'No token, authorization denied' 
+      error: 'No token, authorization denied'
     });
   }
 
-  // Verify token
   try {
+    // Check blacklist
+    const blacklisted = await BlacklistedToken.findOne({ token });
+    if (blacklisted) {
+      return res.status(401).json({ success: false, error: 'Token is blacklisted, please log in again' });
+    }
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
-    // Check if this is an admin or user token
+
     if (decoded.user) {
       req.user = decoded.user;
     } else if (decoded.admin) {
       req.admin = decoded.admin;
     }
-    
+
     next();
   } catch (err) {
     console.error('Token verification error:', err);
-    res.status(401).json({ 
-      success: false, 
-      error: 'Token is not valid' 
-    });
+    res.status(401).json({ success: false, error: 'Token is not valid' });
   }
 };
 

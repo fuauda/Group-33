@@ -1,36 +1,94 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## 1. Project Name  
+**CommunityConnect**  
 
-First, run the development server:
+## 2. Sector / Industry  
+**Civic Engagement, Social Impact, Nonprofit Technology**  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 3. Executive Summary  
+CommunityConnect is a full-stack platform designed to bridge the gap between **citizens, NGOs, and donors**. It empowers communities by simplifying volunteer coordination, ensuring donation transparency, and enabling citizens to report and track local civic issues. The platform addresses real-world challenges such as the absence of efficient volunteer-matching systems, inaccessible NGO information, opaque donation usage, and the exclusion of marginalized groups from civic participation.  
+
+## 4. Problem Statement  
+Many communities face significant barriers to civic engagement:  
+- Volunteers struggle to find opportunities that match their skills and location.  
+- NGOs lack efficient tools to connect with volunteers and donors.  
+- Donors are concerned about transparency in how funds are used.  
+- Citizens have limited or no access to civic reporting tools, making it hard to track local issues or hold stakeholders accountable.  
+
+## 5. Solution  
+CommunityConnect offers an **integrated digital platform** where:  
+- Volunteers can easily discover and apply for NGO opportunities.  
+- NGOs can post project needs, manage volunteer applications, and showcase their impact.  
+- Donors can give with confidence, track fund usage, and support verified causes.  
+- Citizens can report civic issues with photos and geolocation, track progress, and increase visibility through community upvotes.  
+- Admins can approve NGOs, oversee issue management, and ensure a safe, transparent environment.  
+
+## 6. Objectives / Mission  
+- **Empower communities** by connecting citizens, NGOs, and donors.  
+- **Promote transparency** in donations and civic engagement.  
+- **Encourage active participation** from marginalized and underrepresented groups.  
+- **Facilitate real-time reporting** and resolution of civic issues.  
+
+## 7. Target Audience / Beneficiaries  
+- **Volunteers** looking for meaningful contributions.  
+- **NGOs** seeking skilled manpower and visibility.  
+- **Donors** wanting transparent, accountable giving.  
+- **Citizens** aiming to raise and track civic concerns.  
+- **Local governments and administrators** interested in streamlined civic issue tracking.  
+
+## 8. 📂 Documentation
+All project-related documents are stored in the [`docs/`](docs/) folder. You can find the following:
+
+- [Project Proposal](docs/project-proposal.md) – Outlines the objectives, scope, and implementation plan.
+- [Software Requirement Specfication/SRS](docs/SRS.md) – Description of a software system that clearly defines its functional requirements, non-functional requirements, use cases, system behavior, constraints,
+- [System Design](docs/system-architect.md) – Includes architecture diagrams and technical details.
+
+## 9. ⚙️ Quick Start
+```bash 
+community-connect/
+├── frontend/           # React + Zustand + Tailwind CSS
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── store/       # Zustand state stores
+│   │   └── services/    # Axios API calls
+│   └── package.json
+├── backend/            # Node.js + Express + MongoDB
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── config/
+└── README.md
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 10. 📝 Future Enhancements
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- AI-based NGO recommendations for volunteers and donors
+- Multilingual support for local and marginalized communities
+- SMS-based civic issue reporting for offline users
+- Integration with government or municipality systems
+- Analytics dashboard for NGOs and Admins
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 11. 📅 Timeline
 
-## Learn More
+| Task                        | Deadline        |
+|----------------------------|---------------   |
+| Requirement Gathering       | Week 1          |
+| Frontend Development        | Week 2–3        |
+| Backend API & DB Integration| Week 3–4        |
+| Testing & Bug Fixing        | Week 5-7        |
+| Final Deployment & Demo     | Week 8          |
 
-To learn more about Next.js, take a look at the following resources:
+## 12. 👨‍💻 Team Roles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| #  | Name                | Role                 | Contact           |
+|----|-------------------|-------------------|-----------------|
+| 1  | Ashenafi Bancha|Documentation, frontend +backend   |           |
+| 2  |Fuad Tesfaye Mamo| Backend          |                 |
+| 3  | Muluken Seifu|  Fronted             |                  |
+| 4  | Shegitu Shukuri| Frontend                |             |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -21,6 +21,22 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address']
   },
+  role: {
+    type: String,
+    enum: ['admin', 'ngo', 'guest'],
+    default: 'guest',
+    required: true
+  },
+  ngo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'NGO',
+    default: null
+  },
+  status: {
+    type: String,
+    enum: ['active', 'inactive', 'suspended'],
+    default: 'active'
+  },
   address: {
     street: {
       type: String,
@@ -45,7 +61,8 @@ const userSchema = new mongoose.Schema({
     trim: true,
     minlength: [3, 'Username must be at least 3 characters long'],
     maxlength: [30, 'Username cannot be more than 30 characters'],
-    match: [/^[a-zA-Z0-9_]+$/, 'Username can only contain letters, numbers and underscores']
+    match: [/^[a-zA-Z0-9_]+$/, 'Username can only contain letters, numbers and underscores'],
+    index: true
   },
   password: {
     type: String,
@@ -62,6 +79,8 @@ const userSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
   toJSON: {
     transform: function(doc, ret) {
       delete ret.password;

@@ -1,6 +1,7 @@
 'use client';
 import { Github, Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
+import { apiFetch, API_BASE } from '../../../lib/api';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -79,7 +80,7 @@ export default function LoginPage() {
           <form className="space-y-5" onSubmit={async (e) => {
             e.preventDefault();
             const formData = new FormData(e.currentTarget);
-            const response = await fetch('/api/auth/login', {
+            const response = await apiFetch('/api/auth/login', {
               method: 'POST',
               body: JSON.stringify({
                 email: formData.get('email'),
@@ -91,6 +92,10 @@ export default function LoginPage() {
             });
             
             if (response.ok) {
+              const data = await response.json();
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('token', data.token);
+              }
               window.location.href = '/';
             } else {
               alert('Login failed. Please check your credentials.');

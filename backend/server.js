@@ -1,12 +1,15 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const connectDB = require('./config/db');
 const authRoute = require('./routes/authRoute');
 const blogRoute = require('./routes/blogRoute');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoutes');
 const adminInviteRoute = require('./routes/adminInviteRoutes');
-const { verifyToken } = require('./middleware/auth');
+const reportRoute = require('./routes/reportroute');
+const moderationReportRoutes = require('./routes/moderationReportRoutes');
+// const { verifyToken } = require('./middleware/auth');
 require('dotenv').config();
 
 const app = express();
@@ -17,6 +20,20 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'), {
+  setHeaders: (res, path) => {
+    // Set proper content type for images
+    if (path.endsWith('.jpg') || path.endsWith('.jpeg')) {
+      res.setHeader('Content-Type', 'image/jpeg');
+    } else if (path.endsWith('.png')) {
+      res.setHeader('Content-Type', 'image/png');
+    } else if (path.endsWith('.gif')) {
+      res.setHeader('Content-Type', 'image/gif');
+    }
+  }
+}));
 
 // Test route
 app.get('/', (req, res) => {
@@ -29,6 +46,8 @@ app.use('/api/admin', adminRoute);
 app.use('/api/admin/invites', adminInviteRoute);
 app.use('/api/blogs', blogRoute);
 app.use('/api/users', userRoute);
+app.use('/api/reports', reportRoute);
+app.use('/api/moderation-reports', moderationReportRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
