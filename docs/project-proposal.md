@@ -5,7 +5,7 @@
 ### Team Members
 | #  | Name                | Role                 | Contact           |
 |----|-------------------|-------------------|-----------------|
-| 1  | Ashenafi Bancha|Documentation and Backend   |           |
+| 1  | Ashenafi Bancha|Documentation, frontend +backend   |           |
 | 2  |Fuad Tesfaye Mamo| Backend          |                 |
 | 3  | Muluken Seifu|  Fronted             |                  |
 | 4  | Shegitu Shukuri| Frontend                |             |
