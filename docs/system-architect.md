@@ -39,20 +39,21 @@
 
 ---
 
-## 4. Design the Architecture  
+## 💻 4. Design the Architecture  
 
+### Client (Frontend)
+- React.js with Vite
+- Tailwind CSS
+- Zustand for state management
+- Axios for API communication
+- React Router for navigation
 
-**System Design Choices**:
-- **Backend**: Node.js + Express for scalable, stateless REST API
-- **Frontend**: React with Tailwind for responsive user interfaces
-- **Database**: MongoDB (NoSQL), chosen for schema flexibility and scaling read/write loads
-- **Replication**: MongoDB Atlas replication for fault tolerance
-- **Load Balancing**: Handled at platform level (e.g., Railway auto-scaling, or behind NGINX in self-hosted)
-- **CAP Theorem Tradeoff**: Prioritize Availability and Partition Tolerance (AP) over strict consistency
-- **Data Storage**: Firebase Storage or AWS S3 for unstructured media
-- **Authentication**: JWT-based login system with RBAC (role-based access control)
-
----
+### Server (Backend)
+- Node.js with Express.js
+- MongoDB with Mongoose
+- JWT for authentication
+- bcrypt for password hashing
+- CORS for cross-origin requests
 
 ## 5. Prototype and Test  
 
