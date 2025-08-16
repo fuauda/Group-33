@@ -182,15 +182,6 @@ CommunityConnect is a web platform built with the MERN stack that enables commun
 - bcrypt for password hashing
 - CORS for cross-origin requests
 
-## 🔄 External Interfaces
-
-| Interface         | Description                                                  |
-|------------------|--------------------------------------------------------------|
-| File Storage      | Firebase for media uploads (e.g., civic issue photos)        |
-| Database          | MongoDB for user data, issues, donations, and NGOs          |
-| Hosting           | Vercel (frontend), Railway or Heroku (backend)              |
-| API Testing       | Postman collections for verifying all routes and logic       |
-
 ## 🧪 Acceptance Criteria
 
 - All users can authenticate securely and access only permitted data
@@ -229,5 +220,6 @@ CommunityConnect is a web platform built with the MERN stack that enables commun
 ## 📍 Conclusion
 
 CommunityConnect is a mission-driven platform aimed at empowering communities, increasing civic engagement, and enabling collaboration among NGOs, donors, and citizens. Through transparency, accessibility, and modern tools, it provides the foundation for meaningful social impact.
+
 
 
