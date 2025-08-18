@@ -57,14 +57,33 @@ const Features = () => {
 return (
     <section className="py-20" id="services">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col items-start gap-10 xl:gap-14">
-            <div className="flex flex-col gap-5">
-                <div className="space-y-4 max-w-xl">
-                    <span className="text-blue-600 dark:text-blue-500 font-semibold pl-6 relative before:absolute before:top-1/2 before:left-0 before:w-5 before:h-px before:bg-blue-600 dark:before:bg-blue-500 before:rounded-full">
-                        Services
-                    </span>
-                    <h1 className="font-bold text-gray-800 dark:text-white text-3xl">We are here to help with best services
-                    </h1>
-                </div>
+            <div className="flex flex-col gap-5"><div className="space-y-4 max-w-xl mx-auto text-center">
+  <span className="text-blue-600 dark:text-blue-500 font-semibold relative inline-block">
+    Services
+  </span>
+  <h1 className="font-bold text-gray-800 dark:text-white text-3xl">
+    We are here to help with best services
+  </h1>
+  <p className="text-gray-600 dark:text-gray-300">
+    At CommunityConnect, we provide powerful tools that strengthen civic engagement,
+    transparency, and local impact. Whether you're a volunteer, NGO, or concerned citizen,
+    we’ve got solutions built for you.
+  </p>
+</div>
+
+              <div className="space-y-4 max-w-xl mx-auto text-center">
+  <span className="text-blue-600 dark:text-blue-500 font-semibold relative inline-flex items-center justify-center">
+    <span className="w-5 h-px bg-blue-600 dark:bg-blue-500 rounded-full mr-2"></span>
+    Services
+    <span className="w-5 h-px bg-blue-600 dark:bg-blue-500 rounded-full ml-2"></span>
+  </span>
+
+  <h1 className="font-bold text-gray-800 dark:text-white text-3xl">
+    We are here to help with best services
+  </h1>
+</div>
+
+
                 <p className="text-gray-700 dark:text-gray-300">At CommunityConnect, we provide powerful tools that strengthen civic engagement, transparency, and local impact. Whether you're a volunteer, NGO, or concerned citizen, we’ve got solutions built for you.
                     </p>
             </div>
