@@ -93,15 +93,19 @@ export default function AdminBlogPostPage() {
         ))}
 
         {/* Add Blog Card */}
-        <div
-          onClick={handleAdd}
-          className="border rounded-lg flex items-center justify-center bg-gray-50 hover:bg-gray-100 cursor-pointer shadow-sm p-6"
+                <Link
+          href="./blogPost/new"
+          className="border rounded-lg overflow-hidden bg-white shadow-sm flex flex-col items-center justify-center hover:bg-gray-50"
         >
-          <span className="text-lg font-semibold text-gray-600">
-            + Add New Blog
-          </span>
-        </div>
-      </div>
+          <div className="flex-1 flex items-center justify-center w-full h-48 bg-gray-100">
+            <span className="text-3xl font-bold text-gray-400">+</span>
+          </div>
+          <div className="p-4 text-center">
+            <h2 className="font-semibold text-gray-700">Add New Blog</h2>
+            <p className="text-sm text-gray-500">Click to create a new blog post</p>
+          </div>
+        </Link>
+    </div>
     </div>
   )
 }
