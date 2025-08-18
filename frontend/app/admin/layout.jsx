@@ -13,6 +13,7 @@ import {
   Shield,
   Users,
   BarChart3,
+  FileText, // ✅ Added for Blog Post
 } from "lucide-react"
 
 function NavItem({ href, label, icon: Icon, active, collapsed }) {
@@ -50,6 +51,7 @@ export default function AdminLayout({ children }) {
       { href: "/admin/donations", label: "Donations", icon: BarChart3 },
       { href: "/admin/moderation", label: "Content Moderation", icon: Shield },
       { href: "/admin/health", label: "System Health", icon: Activity },
+      { href: "/admin/blogPost", label: "Blog Post", icon: FileText }, // ✅ Added Blog Post
     ],
     []
   )
