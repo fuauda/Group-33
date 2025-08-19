@@ -6,12 +6,12 @@ import { useParams } from "next/navigation"
 import { Input } from "../../../../components/ui/input"
 import { Textarea } from "../../../../components/ui/textarea"
 import { Button } from "../../../../components/ui/button"
-import { services, getServiceById } from "../../data"
+import { services, getServiceById, getServiceBySlug } from "../../data"
 
 export default function QuoteFormPage() {
   const params = useParams()
-  const id = params?.id
-  const service = useMemo(() => getServiceById(id) ?? services[0], [id])
+  const idOrSlug = params?.id
+  const service = useMemo(() => getServiceById(idOrSlug) || getServiceBySlug(idOrSlug) || services[0], [idOrSlug])
   const [form, setForm] = useState({ name: "", email: "", interest: service?.title ?? "", details: "" })
   const [submitted, setSubmitted] = useState(false)
 
@@ -25,7 +25,9 @@ export default function QuoteFormPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-4">
-        <Link href={`/services/${id}`} className="text-sm text-muted-foreground hover:text-foreground">← Back</Link>
+        <Link href={`/services/${idOrSlug}`}>
+          <Button variant="outline">← Back</Button>
+        </Link>
       </div>
 
       <h1 className="mb-6 text-2xl font-semibold">Request a Quote</h1>

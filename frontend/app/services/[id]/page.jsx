@@ -1,17 +1,18 @@
 import Link from "next/link"
 import Image from "next/image"
-import { services, getServiceById } from "../data"
+import { services, getServiceById, getServiceBySlug } from "../data"
 import { Button } from "../../../components/ui/button"
 import { use } from "react"
 
 export async function generateStaticParams() {
-  return services.map((s) => ({ id: String(s.id) }))
+  // Use slugs for cleaner URLs
+  return services.map((s) => ({ id: String(s.slug) }))
 }
 
 export default function ServiceDetailPage({ params }) {
   // Unwrap params per Next.js guidance
   const resolved = use(Promise.resolve(params))
-  const service = getServiceById(resolved.id)
+  const service = getServiceById(resolved.id) || getServiceBySlug(resolved.id)
 
   if (!service) {
     return (
@@ -22,11 +23,15 @@ export default function ServiceDetailPage({ params }) {
     )
   }
 
+  const isCivic = service.slug === "civic-issue-reporter"
+
   return (
     <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-4">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-          ← Back
+        <Link href="/">
+          <Button variant="outline" className="inline-flex items-center gap-2">
+            ← Back
+          </Button>
         </Link>
       </div>
 
@@ -46,23 +51,24 @@ export default function ServiceDetailPage({ params }) {
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {service.features.map((f, i) => (
             <div key={i} className="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm">
-              <span className="inline-flex size-4 items-center justify-center rounded-full bg-emerald-500 text-white">✓</span>
+              <span className={`inline-flex size-4 items-center justify-center rounded-full text-white ${isCivic ? 'bg-blue-600' : 'bg-emerald-500'}`}>✓</span>
               <span>{f}</span>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="mt-10 rounded-xl border p-6 text-center shadow-sm">
+      <section className={`mt-10 rounded-xl border p-6 text-center shadow-sm ${isCivic ? 'border-blue-200 bg-blue-50' : ''}`}>
         <h3 className="text-base font-semibold">Ready to Get Started?</h3>
         <p className="mt-1 text-sm text-muted-foreground">Let’s discuss how {service.title} can help your organization achieve its goals.</p>
         <div className="mt-4 flex justify-center">
-          <Link href={`/services/${service.id}/quote`}>
-            <Button>
-              Request a Quote
+          <Link href={service.slug === 'civic-issue-reporter' ? `/services/${service.slug}/report` : `/services/${service.slug}/quote`}>
+            <Button className={isCivic ? "bg-blue-600 hover:bg-blue-700 text-white" : undefined}>
+              {service.slug === 'civic-issue-reporter' ? "Report an Issue" : "Request a Quote"}
               <span className="ml-2">✦</span>
             </Button>
           </Link>
+
         </div>
       </section>
 
