@@ -7,6 +7,7 @@ import { Input } from "../../../../components/ui/input"
 import { Textarea } from "../../../../components/ui/textarea"
 import { Button } from "../../../../components/ui/button"
 import { services, getServiceById, getServiceBySlug } from "../../data"
+import { apiFetch } from "../../../../lib/api"
 
 export default function ReportFormPage() {
   const params = useParams()
@@ -25,11 +26,59 @@ export default function ReportFormPage() {
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [files, setFiles] = useState([])
+  const [error, setError] = useState("")
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
-  const onSubmit = (e) => {
+  const onFiles = (e) => setFiles(Array.from(e.target.files || []))
+
+  const onSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setError("")
+    setSubmitting(true)
+    try {
+      const title = form.issueType ? `${form.issueType} at ${form.location}` : `Civic Issue at ${form.location}`
+      const content = [
+        `Description: ${form.description}`,
+        `Urgency: ${form.urgency}`,
+        `Reporter: ${form.name} (${form.email}, ${form.phone})`,
+        form.message ? `Additional Info: ${form.message}` : null,
+      ].filter(Boolean).join("\n")
+
+      const fd = new FormData()
+      fd.append("title", title)
+      fd.append("content", content)
+      if (form.issueType) fd.append("categories", form.issueType)
+      // Add helpful tags
+      fd.append("tags", "civic-issue-reporter")
+      if (form.urgency) fd.append("tags", form.urgency)
+      if (form.location) fd.append("tags", form.location)
+      files.forEach((file) => fd.append("images", file))
+
+      const res = await apiFetch("/api/reports", { method: "POST", body: fd })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        const msg = data?.error || data?.message || `Request failed (${res.status})`
+        throw new Error(msg)
+      }
+      setSubmitted(true)
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        issueType: "",
+        urgency: "",
+        location: "",
+        description: "",
+        message: "",
+      })
+      setFiles([])
+    } catch (err) {
+      setError(err.message || "Failed to submit report")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -102,17 +151,31 @@ export default function ReportFormPage() {
           </div>
 
           <div className="grid gap-2">
+            <label className="text-sm" htmlFor="images">Photos (optional)</label>
+            <input id="images" name="images" type="file" accept="image/*" multiple onChange={onFiles} className="h-9 rounded-md border bg-background px-3 text-sm py-1" />
+            {files?.length > 0 && (
+              <p className="text-xs text-muted-foreground">{files.length} file(s) selected</p>
+            )}
+          </div>
+
+          <div className="grid gap-2">
             <label className="text-sm" htmlFor="message">Additional Information</label>
             <Textarea id="message" name="message" placeholder="Any extra context, links, or references..." value={form.message} onChange={onChange} />
           </div>
         </div>
 
         <div className="pt-2">
-          <Button type="submit" className={`w-full ${isCivic ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}`}>
-            Submit Report
+          <Button type="submit" disabled={submitting} className={`w-full ${isCivic ? "bg-blue-600 hover:bg-blue-700 text-white" : ""}`}>
+            {submitting ? "Submitting..." : "Submit Report"}
           </Button>
         </div>
       </form>
+
+      {error && (
+        <div className="mt-6 rounded-md border border-red-300 bg-red-50 p-4 text-red-700 text-sm">
+          {error}
+        </div>
+      )}
 
       <div className={`mt-6 rounded-xl border p-4 text-sm ${isCivic ? "border-blue-200 bg-blue-50 text-blue-800" : "text-muted-foreground"}`}>
         <h2 className="mb-2 text-sm font-semibold text-foreground">What happens next?</h2>

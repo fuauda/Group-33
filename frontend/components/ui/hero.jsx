@@ -1,9 +1,10 @@
 "use client"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "./dialog"
 import Translator from "./translator"
+import { getAuthToken } from "../../lib/api"
 
 const navItems = [
   { id: 0, text: "Home", link: "#home" },
@@ -11,12 +12,18 @@ const navItems = [
   { id: 2, text: "News", link: "#news" },
   { id: 3, text: "FAQs", link: "#FAQs" },
   { id: 5, text: "Contact", link: "#contact-support" },
+  { id: 6, text: "Discussion", link: "/discussion" },
 ]
 
 const Navbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false)
   const toggleNavbar = () => setOpenNavbar((s) => !s)
   const closeNavbar = () => setOpenNavbar(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    setIsLoggedIn(!!getAuthToken())
+  }, [])
 
   return (
     <>
@@ -57,6 +64,12 @@ const Navbar = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 lg:min-w-max mt-10 lg:mt-0">
+              <Link
+                href="/discussion#start"
+                className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-emerald-600 text-white bg-emerald-600 hover:bg-emerald-700 rounded-full"
+              >
+                Start a Discussion
+              </Link>
               <Dialog>
                 <DialogTrigger asChild>
                   <button className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-gray-300 text-gray-700 hover:text-white hover:bg-gray-800 dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:hover:bg-gray-800 rounded-full">
@@ -68,13 +81,19 @@ const Navbar = () => {
                   <Translator />
                 </DialogContent>
               </Dialog>
-
-              <Link
-                href="/auth/login"
-                className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-blue-600 text-white bg-blue-600 hover:bg-blue-800 rounded-full"
-              >
-                Login
-              </Link>
+              {isLoggedIn ? (
+                <div className="flex items-center gap-2 rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1.5">
+                  <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-semibold">U</div>
+                  <span className="text-sm text-gray-800 dark:text-gray-200 hidden sm:block">You</span>
+                </div>
+              ) : (
+                <Link
+                  href="/auth/login"
+                  className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-blue-600 text-white bg-blue-600 hover:bg-blue-800 rounded-full"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
 
