@@ -53,12 +53,17 @@ app.use('/api/ngos', ngoRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ 
-    success: false, 
-    error: 'Something went wrong!',
-    message: process.env.NODE_ENV === 'development' ? err.message : undefined
-  });
+  const status = err.statusCode || 500;
+  const payload = {
+    success: false,
+    error: err.message || 'Something went wrong!'
+  };
+  if (err.details) payload.errors = err.details;
+  if (process.env.NODE_ENV === 'development' && !err.details) {
+    payload.message = err.message;
+  }
+  console.error(err.stack || err);
+  res.status(status).json(payload);
 });
 
 // 404 handler
