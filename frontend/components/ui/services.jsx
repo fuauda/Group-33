@@ -67,48 +67,33 @@ const services = [
 ]
 
 const Features = () => {
-
     return (
-        <section className="py-20" id="services">
+        <section className="py-20 bg-gray-50 dark:bg-gray-900" id="services">
             <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col items-start gap-10 xl:gap-14">
-                <div className="flex flex-col gap-5">
-                    <div className="space-y-4 max-w-xl mx-auto text-center">
-                        <span className="text-blue-600 dark:text-blue-500 font-semibold relative inline-block">
-                            Services
-                        </span>
-                        <h1 className="font-bold text-gray-800 dark:text-white text-3xl">
-                            We are here to help with best services
-                        </h1>
-                        <p className="text-gray-600 dark:text-gray-300">
-                            At CommunityConnect, we provide powerful tools that strengthen civic engagement,
-                            transparency, and local impact. Whether you're a volunteer, NGO, or concerned citizen,
-                            we've got solutions built for you.
-                        </p>
-                    </div>
 
-                    <div className="space-y-4 max-w-xl mx-auto text-center">
-                        <span className="text-blue-600 dark:text-blue-500 font-semibold relative inline-flex items-center justify-center">
-                            <span className="w-5 h-px bg-blue-600 dark:bg-blue-500 rounded-full mr-2"></span>
-                            Services
-                            <span className="w-5 h-px bg-blue-600 dark:bg-blue-500 rounded-full ml-2"></span>
-                        </span>
+                {/* Interactive Services Heading */}
+                <div className="flex flex-col gap-5 text-center w-full">
+                    <span className="text-blue-600 dark:text-blue-500 font-semibold relative inline-block text-lg tracking-wider">
+                        Services
+                    </span>
 
-                        <h1 className="font-bold text-gray-800 dark:text-white text-3xl">
-                            We are here to help with best services
-                        </h1>
-                    </div>
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 relative inline-block animate-gradient-x transition-transform duration-500 hover:scale-105">
+                        We are here to help with best services
+                        {/* Animated underline */}
+                        <span className="block h-1 w-20 bg-sky-500 dark:bg-sky-400 mx-auto mt-2 rounded-full transition-all duration-500 hover:w-32"></span>
+                    </h1>
 
-                    <p className="text-gray-700 dark:text-gray-300">
-                        At CommunityConnect, we provide powerful tools that strengthen civic engagement, transparency, and local impact. Whether you're a volunteer, NGO, or concerned citizen, we've got solutions built for you.
+                    <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+                        At CommunityConnect, we provide powerful tools that strengthen civic engagement,
+                        transparency, and local impact. Whether you're a volunteer, NGO, or concerned citizen,
+                        we've got solutions built for you.
                     </p>
                 </div>
-                
+
+                {/* Service Cards Grid */}
                 <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
                     {services.map(service => (
-                        <ServiceCard 
-                            key={service.id} 
-                            {...service} 
-                        />
+                        <ServiceCard key={service.id} {...service} />
                     ))}
                 </div>
             </div>
