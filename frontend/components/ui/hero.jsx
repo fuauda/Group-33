@@ -72,9 +72,9 @@ const Navbar = () => {
               </Link>
               <Dialog>
                 <DialogTrigger asChild>
-                  <button className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-gray-300 text-gray-700 hover:text-white hover:bg-gray-800 dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:hover:bg-gray-800 rounded-full">
+                  {/* <button className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-gray-300 text-gray-700 hover:text-white hover:bg-gray-800 dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:hover:bg-gray-800 rounded-full">
                     Translate
-                  </button>
+                  </button> */}
                 </DialogTrigger>
                 <DialogContent className="max-w-xl">
                   <DialogTitle>Translate</DialogTitle>
