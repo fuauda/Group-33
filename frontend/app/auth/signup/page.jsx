@@ -6,44 +6,20 @@ import { apiFetch } from "../../../lib/api";
 const SignupPage = () => {
   const handleSubmit = async (data) => {
     try {
+      // Backend expects flat address fields (address, city, zipCode), and no nested NGO on register
       const userData = {
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
+        address: data.address,
+        city: data.city,
+        zipCode: data.zipCode,
         username: data.username,
         password: data.password,
         confirmPassword: data.confirmPassword,
-        role: data.role || "individual",
-        address: {
-          street: data.address,
-          city: data.city,
-          state: data.state,
-          country: data.country,
-          zipCode: data.zipCode,
-        },
       };
 
-      if (data.role === "ngo") {
-        userData.ngo = {
-          name: data.ngoName,
-          mission: data.ngoMission,
-          description: data.ngoDescription || "",
-          contact: {
-            email: data.email,
-            phone: data.ngoPhone,
-            website: data.ngoWebsite || "",
-          },
-          address: {
-            street: data.address,
-            city: data.city,
-            state: data.state,
-            country: data.country,
-            zipCode: data.zipCode,
-          },
-          logoUrl: data.ngoLogo || "",
-          status: "pending",
-        };
-      }
+      // Register user first
 
       const res = await apiFetch("/api/auth/register", {
         method: "POST",
@@ -56,7 +32,7 @@ const SignupPage = () => {
         throw new Error(
           errorData.message ||
             errorData.error ||
-            (errorData.errors ? errorData.errors.join("\n") : "Registration failed")
+            (Array.isArray(errorData.errors) ? errorData.errors.join("\n") : "Registration failed")
         );
       }
 
@@ -64,6 +40,40 @@ const SignupPage = () => {
 
       if (typeof window !== "undefined" && responseData?.token) {
         localStorage.setItem("token", responseData.token);
+      }
+
+      // If NGO, create NGO profile after registration using token
+      if (data.role === "ngo") {
+        const ngoPayload = {
+          name: data.ngoName,
+          mission: data.ngoMission,
+          description: data.ngoDescription || "",
+          logoUrl: data.ngoLogo || "",
+          contact: {
+            email: data.email,
+            phone: data.ngoPhone,
+            website: data.ngoWebsite || "",
+            address: {
+              street: data.address,
+              city: data.city,
+              state: data.state,
+              country: data.country,
+              postalCode: data.zipCode,
+            },
+          },
+        };
+        const ngoRes = await apiFetch("/api/ngos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(ngoPayload),
+        });
+        if (!ngoRes.ok) {
+          const ngoError = await ngoRes.json().catch(() => ({}));
+          // Do not fail signup entirely, but inform user
+          throw new Error(
+            ngoError.message || ngoError.error || (Array.isArray(ngoError.errors) ? ngoError.errors.map(e => e.msg || e).join("\n") : "Failed to create NGO profile")
+          );
+        }
       }
 
       alert(

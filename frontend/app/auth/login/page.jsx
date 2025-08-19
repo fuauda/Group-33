@@ -5,6 +5,7 @@ import { apiFetch, API_BASE } from '../../../lib/api';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   return (
     (<main
       className="bg-background flex min-h-screen w-full flex-col items-center justify-center sm:px-4">
@@ -80,27 +81,36 @@ export default function LoginPage() {
           <form className="space-y-5" onSubmit={async (e) => {
             e.preventDefault();
             const formData = new FormData(e.currentTarget);
-            const response = await apiFetch('/api/auth/login', {
-              method: 'POST',
-              body: JSON.stringify({
-                email: formData.get('email'),
-                password: formData.get('password')
-              }),
-              headers: {
-                'Content-Type': 'application/json'
+            setErrorMessage('');
+            try {
+              const response = await apiFetch('/api/auth/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                  email: formData.get('email'),
+                  password: formData.get('password')
+                }),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              });
+              if (response.ok) {
+                const data = await response.json();
+                if (typeof window !== 'undefined' && data?.token) {
+                  localStorage.setItem('token', data.token);
+                }
+                window.location.href = '/';
+              } else {
+                const err = await response.json().catch(() => ({}));
+                const message = err?.msg || err?.error || (Array.isArray(err?.errors) ? err.errors.join('\n') : 'Invalid credentials');
+                setErrorMessage(message);
               }
-            });
-            
-            if (response.ok) {
-              const data = await response.json();
-              if (typeof window !== 'undefined') {
-                localStorage.setItem('token', data.token);
-              }
-              window.location.href = '/';
-            } else {
-              alert('Login failed. Please check your credentials.');
+            } catch (e) {
+              setErrorMessage('Unable to reach server. Please try again.');
             }
           }}>
+            {errorMessage && (
+              <p className="text-sm text-red-600">{errorMessage}</p>
+            )}
             <div>
               <label className="font-medium">Email</label>
               <input

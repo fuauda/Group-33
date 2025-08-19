@@ -7,6 +7,7 @@ const blogRoute = require('./routes/blogRoute');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoutes');
 const adminInviteRoute = require('./routes/adminInviteRoutes');
+const ngoRoutes = require('./routes/ngoRoutes');
 const reportRoute = require('./routes/reportroute');
 const moderationReportRoutes = require('./routes/moderationReportRoutes');
 // const { verifyToken } = require('./middleware/auth');
@@ -48,6 +49,7 @@ app.use('/api/blogs', blogRoute);
 app.use('/api/users', userRoute);
 app.use('/api/reports', reportRoute);
 app.use('/api/moderation-reports', moderationReportRoutes);
+app.use('/api/ngos', ngoRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -409,7 +409,7 @@ export default function MultiStepForm({
                 </div>
 
                 {submitError && (
-                  <p className="text-destructive text-sm">{submitError}</p>
+                  <p className="text-destructive text-sm whitespace-pre-line">{submitError}</p>
                 )}
 
                 <div className="flex justify-between mt-8">
