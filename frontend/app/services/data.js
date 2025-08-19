@@ -109,5 +109,9 @@ export function getServiceById(id) {
   return services.find((s) => String(s.id) === String(id))
 }
 
+export function getServiceBySlug(slug) {
+  return services.find((s) => String(s.slug) === String(slug))
+}
+
 
 
