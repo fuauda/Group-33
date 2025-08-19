@@ -29,6 +29,7 @@ export default function ReportFormPage() {
   const [submitting, setSubmitting] = useState(false)
   const [files, setFiles] = useState([])
   const [error, setError] = useState("")
+  const [fieldErrors, setFieldErrors] = useState({})
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
   const onFiles = (e) => setFiles(Array.from(e.target.files || []))
@@ -36,29 +37,30 @@ export default function ReportFormPage() {
   const onSubmit = async (e) => {
     e.preventDefault()
     setError("")
+    setFieldErrors({})
     setSubmitting(true)
     try {
-      const title = form.issueType ? `${form.issueType} at ${form.location}` : `Civic Issue at ${form.location}`
-      const content = [
-        `Description: ${form.description}`,
-        `Urgency: ${form.urgency}`,
-        `Reporter: ${form.name} (${form.email}, ${form.phone})`,
-        form.message ? `Additional Info: ${form.message}` : null,
-      ].filter(Boolean).join("\n")
-
       const fd = new FormData()
-      fd.append("title", title)
-      fd.append("content", content)
-      if (form.issueType) fd.append("categories", form.issueType)
-      // Add helpful tags
-      fd.append("tags", "civic-issue-reporter")
-      if (form.urgency) fd.append("tags", form.urgency)
-      if (form.location) fd.append("tags", form.location)
-      files.forEach((file) => fd.append("images", file))
+      fd.append("name", form.name)
+      fd.append("email", form.email)
+      fd.append("phone", form.phone)
+      fd.append("issueType", form.issueType)
+      fd.append("urgency", form.urgency)
+      fd.append("location", form.location)
+      fd.append("description", form.description)
+      if (form.message) fd.append("additionalInfo", form.message)
+      files.forEach((file) => fd.append("photos", file))
 
-      const res = await apiFetch("/api/reports", { method: "POST", body: fd })
+      const res = await apiFetch("/api/issues/report", { method: "POST", body: fd })
       if (!res.ok) {
         const data = await res.json().catch(() => ({}))
+        if (Array.isArray(data?.errors)) {
+          const fe = {}
+          data.errors.forEach((er) => {
+            if (er?.path) fe[er.path] = er.msg || er.message
+          })
+          setFieldErrors(fe)
+        }
         const msg = data?.error || data?.message || `Request failed (${res.status})`
         throw new Error(msg)
       }
@@ -97,14 +99,17 @@ export default function ReportFormPage() {
           <div className="grid gap-2">
             <label className="text-sm" htmlFor="name">Full Name *</label>
             <Input id="name" name="name" required placeholder="Enter your full name" value={form.name} onChange={onChange} />
+            {fieldErrors.name && (<p className="text-xs text-red-600">{fieldErrors.name}</p>)}
           </div>
           <div className="grid gap-2">
             <label className="text-sm" htmlFor="email">Email Address *</label>
             <Input id="email" name="email" type="email" required placeholder="Enter your email address" value={form.email} onChange={onChange} />
+            {fieldErrors.email && (<p className="text-xs text-red-600">{fieldErrors.email}</p>)}
           </div>
           <div className="grid gap-2">
             <label className="text-sm" htmlFor="phone">Phone Number *</label>
             <Input id="phone" name="phone" type="tel" required placeholder="Enter your phone number" value={form.phone} onChange={onChange} />
+            {fieldErrors.phone && (<p className="text-xs text-red-600">{fieldErrors.phone}</p>)}
           </div>
 
           <div className="grid gap-2">
@@ -124,6 +129,7 @@ export default function ReportFormPage() {
                 <option key={opt} value={opt}>{opt}</option>
               ))}
             </select>
+            {fieldErrors.issueType && (<p className="text-xs text-red-600">{fieldErrors.issueType}</p>)}
           </div>
 
           <div className="grid gap-2">
@@ -138,21 +144,24 @@ export default function ReportFormPage() {
                 <option key={opt} value={opt}>{opt}</option>
               ))}
             </select>
+            {fieldErrors.urgency && (<p className="text-xs text-red-600">{fieldErrors.urgency}</p>)}
           </div>
 
           <div className="grid gap-2">
             <label className="text-sm" htmlFor="location">Issue Location *</label>
             <Input id="location" name="location" required placeholder="e.g., Bole, Addis Ababa - Near Bole Airport" value={form.location} onChange={onChange} />
+            {fieldErrors.location && (<p className="text-xs text-red-600">{fieldErrors.location}</p>)}
           </div>
 
           <div className="grid gap-2">
             <label className="text-sm" htmlFor="description">Issue Description *</label>
             <Textarea id="description" name="description" required placeholder="Describe the issue and how it affects the community..." value={form.description} onChange={onChange} />
+            {fieldErrors.description && (<p className="text-xs text-red-600">{fieldErrors.description}</p>)}
           </div>
 
           <div className="grid gap-2">
-            <label className="text-sm" htmlFor="images">Photos (optional)</label>
-            <input id="images" name="images" type="file" accept="image/*" multiple onChange={onFiles} className="h-9 rounded-md border bg-background px-3 text-sm py-1" />
+            <label className="text-sm" htmlFor="photos">Photos (optional)</label>
+            <input id="photos" name="photos" type="file" accept="image/*" multiple onChange={onFiles} className="h-9 rounded-md border bg-background px-3 text-sm py-1" />
             {files?.length > 0 && (
               <p className="text-xs text-muted-foreground">{files.length} file(s) selected</p>
             )}
@@ -161,6 +170,7 @@ export default function ReportFormPage() {
           <div className="grid gap-2">
             <label className="text-sm" htmlFor="message">Additional Information</label>
             <Textarea id="message" name="message" placeholder="Any extra context, links, or references..." value={form.message} onChange={onChange} />
+            {fieldErrors.additionalInfo && (<p className="text-xs text-red-600">{fieldErrors.additionalInfo}</p>)}
           </div>
         </div>
 
