@@ -12,7 +12,7 @@ export default function Home() {
     <>
     
       <HeroSection />
-      < HeroVideoDialogDemoTopInBottomOut />
+      <HeroVideoDialogDemoTopInBottomOut />
 
       <Features />
       <BlogSection />
