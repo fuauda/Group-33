@@ -12,7 +12,7 @@ const {
   updateReport,
   deleteReport,
   toggleLike
-} = require('../controller/reportController');
+} = require('../controller/reportcontroller');
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
