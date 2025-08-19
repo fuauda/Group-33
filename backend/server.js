@@ -7,6 +7,7 @@ const blogRoute = require('./routes/blogRoute');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoutes');
 const adminInviteRoute = require('./routes/adminInviteRoutes');
+const ngoRoutes = require('./routes/ngoRoutes');
 const reportRoute = require('./routes/reportroute');
 const moderationReportRoutes = require('./routes/moderationReportRoutes');
 // const { verifyToken } = require('./middleware/auth');
@@ -48,15 +49,21 @@ app.use('/api/blogs', blogRoute);
 app.use('/api/users', userRoute);
 app.use('/api/reports', reportRoute);
 app.use('/api/moderation-reports', moderationReportRoutes);
+app.use('/api/ngos', ngoRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ 
-    success: false, 
-    error: 'Something went wrong!',
-    message: process.env.NODE_ENV === 'development' ? err.message : undefined
-  });
+  const status = err.statusCode || 500;
+  const payload = {
+    success: false,
+    error: err.message || 'Something went wrong!'
+  };
+  if (err.details) payload.errors = err.details;
+  if (process.env.NODE_ENV === 'development' && !err.details) {
+    payload.message = err.message;
+  }
+  console.error(err.stack || err);
+  res.status(status).json(payload);
 });
 
 // 404 handler
