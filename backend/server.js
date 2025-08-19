@@ -9,6 +9,7 @@ const adminRoute = require('./routes/adminRoutes');
 const adminInviteRoute = require('./routes/adminInviteRoutes');
 const ngoRoutes = require('./routes/ngoRoutes');
 const reportRoute = require('./routes/reportroute');
+const issueReportRoutes = require('./routes/issueReportRoutes');
 const moderationReportRoutes = require('./routes/moderationReportRoutes');
 // const { verifyToken } = require('./middleware/auth');
 require('dotenv').config();
@@ -50,6 +51,7 @@ app.use('/api/users', userRoute);
 app.use('/api/reports', reportRoute);
 app.use('/api/moderation-reports', moderationReportRoutes);
 app.use('/api/ngos', ngoRoutes);
+app.use('/api/issues', issueReportRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
