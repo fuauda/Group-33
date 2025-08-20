@@ -2,18 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import {
-  ArrowLeft,
-  Plus,
-  Search,
-  ThumbsUp,
-  MessageCircle,
-  Tag,
-  User,
-  ChevronDown,
-  SortAsc,
-  Filter
-} from "lucide-react"
+import { Plus, Search, ThumbsUp, MessageCircle, User, ChevronDown, Filter } from "lucide-react"
 import FooterBlock from "../../components/ui/footer"
 import { getAuthToken, getCurrentUser, clearAuthToken } from "../../lib/api"
 
@@ -77,7 +66,7 @@ const initialThreads = [
 export default function DiscussionPage() {
   const router = useRouter()
   const [threads, setThreads] = useState(initialThreads)
-  const [visibleCount, setVisibleCount] = useState(6)
+  const [visibleCount, setVisibleCount] = useState(8)
   const [showComposer, setShowComposer] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
@@ -156,8 +145,6 @@ export default function DiscussionPage() {
     return Array.from(tagCount.entries()).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([tag]) => tag)
   }, [threads])
 
-  const pinned = useMemo(() => threads.slice(0, 2), [threads])
-
   function handleCreateThread(e) {
     e.preventDefault()
     if (!getAuthToken()) {
@@ -186,7 +173,6 @@ export default function DiscussionPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Toasts */}
       <div className="fixed top-4 right-4 z-50 space-y-2">
         {toasts.map((t) => (
           <div key={t.id} className={`px-4 py-3 rounded-lg shadow-md text-sm ${t.variant === "warning" ? "bg-amber-100 text-amber-800 border border-amber-200" : "bg-gray-800 text-white"}`}>
@@ -195,110 +181,96 @@ export default function DiscussionPage() {
         ))}
       </div>
 
-      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4 min-w-0">
-              <Link href="/" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                <ArrowLeft className="w-5 h-5" />
-                Back
-              </Link>
-              <div className="h-6 w-px bg-gray-300 dark:bg-gray-600" />
-              <h1 className="truncate text-xl font-semibold text-gray-900 dark:text-white">Community Discussion</h1>
+      {/* Header */}
+      <header className="border-b bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Community Discussions</h1>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Share ideas, ask for help, and collaborate with your community.</p>
             </div>
             <div className="flex items-center gap-3">
+              <div className="relative hidden sm:block">
+                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="text" placeholder="Search topics..." className="w-72 pl-9 pr-3 py-2 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 outline-none" />
+              </div>
+              <button
+                onClick={() => {
+                  if (!getAuthToken()) {
+                    showToast("Please log in to start a discussion.", "warning")
+                    return
+                  }
+                  setShowComposer(true)
+                  setTimeout(() => composerRef.current?.scrollIntoView({ behavior: "smooth" }), 0)
+                }}
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 text-white px-4 py-2 hover:bg-blue-700"
+              >
+                <Plus className="w-4 h-4" /> New Post
+              </button>
               {isLoggedIn ? (
-                <div className="flex items-center gap-2 rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1.5">
+                <div className="hidden sm:flex items-center gap-2 rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1.5">
                   <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-semibold">{(username?.[0] || 'U').toUpperCase()}</div>
-                  <span className="text-sm text-gray-800 dark:text-gray-200 hidden sm:block">{username || 'User'}</span>
+                  <span className="text-sm text-gray-800 dark:text-gray-200">{username || 'User'}</span>
                 </div>
               ) : (
-                <Link href="/auth/login" className="px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700">Login</Link>
+                <Link href="/auth/login" className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">Login</Link>
               )}
             </div>
           </div>
+          {/* Mobile search */}
+          <div className="mt-4 sm:hidden">
+            <div className="relative">
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="text" placeholder="Search topics..." className="w-full pl-9 pr-3 py-2 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 outline-none" />
+            </div>
+          </div>
         </div>
-      </div>
+      </header>
 
+      {/* Body */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left sidebar */}
-          <aside className="lg:col-span-3">
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm">
+          {/* Left: categories + filters */}
+          <aside className="lg:col-span-3 space-y-4">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
               <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Categories</h3>
               <div className="space-y-2">
-                <button onClick={() => setSelectedCategory("All")} className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm ${selectedCategory === "All" ? "bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/40"}`}>
-                  <span>All</span>
-                </button>
-                {defaultCategories.map((c) => (
-                  <button key={c} onClick={() => setSelectedCategory(c)} className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm ${selectedCategory === c ? "bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300" : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/40"}`}>
+                {['All', ...defaultCategories].map((c) => (
+                  <button key={c} onClick={() => setSelectedCategory(c)} className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm ${selectedCategory === c ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/40'}`}>
                     <span>{c}</span>
-                    <span className={`ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs ${categoryStyles[c]}`}>{c}</span>
+                    {c !== 'All' && <span className={`ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs ${categoryStyles[c]}`}>{c}</span>}
                   </button>
                 ))}
               </div>
-              <div className="mt-4">
-                <button
-                  onClick={() => {
-                    if (!getAuthToken()) {
-                      showToast("Please log in to start a discussion.", "warning")
-                    } else {
-                      setShowComposer((s) => !s)
-                      setTimeout(() => composerRef.current?.scrollIntoView({ behavior: "smooth" }), 0)
-                    }
-                  }}
-                  className="inline-flex items-center gap-2 w-full justify-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                >
-                  <Plus className="w-4 h-4" /> Start a Discussion
-                </button>
-              </div>
             </div>
-          </aside>
 
-          {/* Center column */}
-          <main className="lg:col-span-6 space-y-6">
-            {/* Controls */}
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm">
-              <div className="flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
-                <div className="relative w-full md:max-w-sm">
-                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                  <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="text" placeholder="Search topics..." className="w-full pl-9 pr-3 py-2 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 outline-none" />
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <div className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-                    <SortAsc className="w-4 h-4" /> Sort
-                  </div>
-                  <div className="relative">
-                    <button className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
-                      {sortBy} <ChevronDown className="w-4 h-4" />
-                    </button>
-                    <div className="absolute mt-2 w-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-10 hidden group-focus:block" />
-                  </div>
-                  <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Sort & Filter</h3>
+              <div className="space-y-3">
+                <div>
+                  <label className="text-xs text-gray-500 dark:text-gray-400">Sort by</label>
+                  <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="mt-1 w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200">
                     <option>Newest</option>
                     <option>Most Active</option>
                     <option>Trending</option>
                   </select>
-                  <div className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 ml-2">
-                    <Filter className="w-4 h-4" /> Category
-                  </div>
-                  <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className="px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
-                    <option>All</option>
-                    {defaultCategories.map((c) => (
-                      <option key={c}>{c}</option>
-                    ))}
-                  </select>
+                </div>
+                <div className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <Filter className="w-4 h-4" /> Additional filters coming soon
                 </div>
               </div>
             </div>
+          </aside>
 
+          {/* Center: feed */}
+          <main className="lg:col-span-6 space-y-4">
             {/* Composer */}
-            <div id="start" ref={composerRef} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm">
-              <button onClick={() => setShowComposer((s) => !s)} className="w-full flex items-center justify-between px-4 py-3 text-left">
-                <span className="font-semibold text-gray-900 dark:text-white">Start a Discussion</span>
-                <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${showComposer ? "rotate-180" : ""}`} />
-              </button>
-              {showComposer && (
+            {showComposer && (
+              <div id="start" ref={composerRef} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl">
+                <div className="flex items-center justify-between px-4 py-3">
+                  <span className="font-semibold text-gray-900 dark:text-white">Create a new post</span>
+                  <button onClick={() => setShowComposer(false)} className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">Close</button>
+                </div>
                 <form onSubmit={handleCreateThread} className="px-4 pb-4 space-y-3">
                   <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Title" className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200" />
                   <div className="flex items-center gap-3">
@@ -315,8 +287,8 @@ export default function DiscussionPage() {
                     </button>
                   </div>
                 </form>
-              )}
-            </div>
+              </div>
+            )}
 
             {/* Feed */}
             <div className="space-y-3">
@@ -330,27 +302,24 @@ export default function DiscussionPage() {
                       showToast("Please log in to view discussions.", "warning")
                     }
                   }}
-                  className="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:shadow-lg transition-shadow"
+                  className="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:shadow-sm transition-shadow"
                 >
                   <div className="flex items-center gap-2 mb-1">
                     <span className={`text-xs px-2 py-0.5 rounded-full ${categoryStyles[t.category]}`}>{t.category}</span>
                     <span className="text-xs text-gray-500 dark:text-gray-400">{t.time}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t.title}</h3>
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-white">{t.title}</h3>
                   <p className="text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">{t.body}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {t.tags.map((tag) => (
-                      <span key={tag} className="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200">#{tag}</span>
-                    ))}
-                  </div>
-                  <div className="mt-4 flex items-center justify-between">
+                  <div className="mt-3 flex items-center justify-between">
+                    <div className="flex flex-wrap gap-2">
+                      {t.tags.map((tag) => (
+                        <span key={tag} className="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200">#{tag}</span>
+                      ))}
+                    </div>
                     <div className="flex items-center gap-4 text-gray-600 dark:text-gray-300">
                       <span className="inline-flex items-center gap-1"><ThumbsUp className="w-4 h-4" /> {t.likes}</span>
                       <span className="inline-flex items-center gap-1"><MessageCircle className="w-4 h-4" /> {t.comments}</span>
-                    </div>
-                    <div className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                      <User className="w-4 h-4" />
-                      {t.author}
+                      <span className="inline-flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400"><User className="w-4 h-4" /> {t.author}</span>
                     </div>
                   </div>
                 </Link>
@@ -363,9 +332,9 @@ export default function DiscussionPage() {
             </div>
           </main>
 
-          {/* Right sidebar */}
-          <aside className="lg:col-span-3 space-y-6">
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm">
+          {/* Right: trending & info */}
+          <aside className="lg:col-span-3 space-y-4">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
               <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Trending Hashtags</h3>
               <div className="flex flex-wrap gap-2">
                 {trendingHashtags.map((tag) => (
@@ -374,36 +343,13 @@ export default function DiscussionPage() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm">
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Pinned Discussions</h3>
-              <div className="space-y-3">
-                {pinned.map((p) => (
-                  <Link
-                    key={p.id}
-                    href={`/discussion/${p.id}`}
-                    onClick={(e) => {
-                      if (!getAuthToken()) {
-                        e.preventDefault()
-                        showToast("Please log in to view discussions.", "warning")
-                      }
-                    }}
-                    className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/40"
-                  >
-                    <div className="text-sm font-medium text-gray-900 dark:text-white line-clamp-1">{p.title}</div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400">{p.category} • {p.time}</div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm">
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Active Users</h3>
-              <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                <div className="flex items-center justify-between"><span>@aster</span><span className="text-xs text-gray-500">online</span></div>
-                <div className="flex items-center justify-between"><span>@mimi</span><span className="text-xs text-gray-500">online</span></div>
-                <div className="flex items-center justify-between"><span>@samuel</span><span className="text-xs text-gray-500">5m ago</span></div>
-                <div className="flex items-center justify-between"><span>@dawit</span><span className="text-xs text-gray-500">12m ago</span></div>
-              </div>
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Community Rules</h3>
+              <ul className="text-sm text-gray-600 dark:text-gray-300 list-disc pl-5 space-y-1">
+                <li>Be respectful and constructive</li>
+                <li>No spam or self-promotion</li>
+                <li>Stay on topic and add value</li>
+              </ul>
             </div>
           </aside>
         </div>
@@ -413,6 +359,3 @@ export default function DiscussionPage() {
     </div>
   )
 }
-
-
-
