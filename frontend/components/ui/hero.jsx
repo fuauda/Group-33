@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "./dialog"
 import Translator from "./translator"
-import { getAuthToken } from "../../lib/api"
+import { getAuthToken, getCurrentUser, logoutRequest, clearAuthToken } from "../../lib/api"
 
 const navItems = [
   { id: 0, text: "Home", link: "#home" },
@@ -20,10 +20,32 @@ const Navbar = () => {
   const toggleNavbar = () => setOpenNavbar((s) => !s)
   const closeNavbar = () => setOpenNavbar(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [username, setUsername] = useState("")
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    setIsLoggedIn(!!getAuthToken())
+    const hasToken = !!getAuthToken()
+    setIsLoggedIn(hasToken)
+    if (hasToken) {
+      getCurrentUser().then((user) => {
+        if (user && (user.username || user.firstName)) {
+          setUsername(user.username || user.firstName)
+        } else {
+          setIsLoggedIn(false)
+          clearAuthToken()
+        }
+      }).catch(() => {})
+    }
   }, [])
+
+  async function handleLogout() {
+    try {
+      await logoutRequest()
+    } finally {
+      clearAuthToken()
+      window.location.href = "/auth/login"
+    }
+  }
 
   return (
     <>
@@ -82,9 +104,26 @@ const Navbar = () => {
                 </DialogContent>
               </Dialog>
               {isLoggedIn ? (
-                <div className="flex items-center gap-2 rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1.5">
-                  <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-semibold">U</div>
-                  <span className="text-sm text-gray-800 dark:text-gray-200 hidden sm:block">You</span>
+                <div className="relative">
+                  <button
+                    onClick={() => setMenuOpen((v) => !v)}
+                    className="flex items-center gap-2 rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1.5 hover:bg-gray-200 dark:hover:bg-gray-700"
+                  >
+                    <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-semibold">
+                      {(username?.[0] || 'U').toUpperCase()}
+                    </div>
+                    <span className="text-sm text-gray-800 dark:text-gray-200 hidden sm:block">{username || 'User'}</span>
+                  </button>
+                  {menuOpen && (
+                    <div className="absolute right-0 mt-2 w-40 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg z-50">
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <Link

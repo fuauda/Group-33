@@ -15,7 +15,7 @@ import {
   Filter
 } from "lucide-react"
 import FooterBlock from "../../components/ui/footer"
-import { getAuthToken } from "../../lib/api"
+import { getAuthToken, getCurrentUser, clearAuthToken } from "../../lib/api"
 
 const categoryStyles = {
   General: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
@@ -87,6 +87,7 @@ export default function DiscussionPage() {
   const [body, setBody] = useState("")
   const composerRef = useRef(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [username, setUsername] = useState("")
   const [toasts, setToasts] = useState([])
 
   function showToast(message, variant = "info") {
@@ -98,7 +99,18 @@ export default function DiscussionPage() {
   }
 
   useEffect(() => {
-    setIsLoggedIn(!!getAuthToken())
+    const hasToken = !!getAuthToken()
+    setIsLoggedIn(hasToken)
+    if (hasToken) {
+      getCurrentUser().then((u) => {
+        if (u && (u.username || u.firstName)) {
+          setUsername(u.username || u.firstName)
+        } else {
+          clearAuthToken()
+          setIsLoggedIn(false)
+        }
+      }).catch(() => {})
+    }
   }, [])
 
   useEffect(() => {
@@ -197,8 +209,8 @@ export default function DiscussionPage() {
             <div className="flex items-center gap-3">
               {isLoggedIn ? (
                 <div className="flex items-center gap-2 rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1.5">
-                  <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-semibold">U</div>
-                  <span className="text-sm text-gray-800 dark:text-gray-200 hidden sm:block">You</span>
+                  <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-semibold">{(username?.[0] || 'U').toUpperCase()}</div>
+                  <span className="text-sm text-gray-800 dark:text-gray-200 hidden sm:block">{username || 'User'}</span>
                 </div>
               ) : (
                 <Link href="/auth/login" className="px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700">Login</Link>
