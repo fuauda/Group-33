@@ -94,10 +94,10 @@ const SignupPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100 p-5">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-3xl p-8 md:p-12">
-        <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
+        <h1 className="text-3xl font-bold mb-6 text-center">
           Create Your Account
         </h1>
-        <p className="text-center text-blue-400 mb-8">
+        <p className="text-center text-black-400 mb-8">
           Join us and start your journey today!
         </p>
         <MultiStepForm

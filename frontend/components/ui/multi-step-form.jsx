@@ -75,7 +75,7 @@ export default function MultiStepForm({
   const steps = [
     {
       id: 'personal',
-      title: 'Account Type',
+      title: '  Account Type',
       description: 'Are you an individual or representing an organization?',
       schema: personalInfoSchema,
       fields: [
@@ -83,23 +83,23 @@ export default function MultiStepForm({
           name: 'firstName',
           label: 'First Name',
           type: 'text',
-          placeholder: 'John',
+          placeholder: 'Belachew',
         },
         {
           name: 'lastName',
           label: 'Last Name',
           type: 'text',
-          placeholder: 'Doe',
+          placeholder: 'Ayele',
         },
         {
           name: 'email',
           label: 'Email',
           type: 'email',
-          placeholder: 'john.doe@example.com',
+          placeholder: 'belachew@example.com',
         },
         {
           name: 'role',
-          label: 'Account Type',
+          label: ' Account Type',
           type: 'radio',
           options: [
             { value: 'individual', label: 'Individual' },
@@ -290,7 +290,7 @@ export default function MultiStepForm({
       className={cn('bg-card/40 mx-auto w-full max-w-2xl rounded-lg p-10 shadow-lg', className)}>
       {!isComplete ? (
         <>
-          {/* Progress bar */}
+          {/* Progress bar */} 
           <div className="mb-8">
             <div className="mb-2 flex justify-between">
               <span className="text-sm font-medium">
@@ -300,7 +300,6 @@ export default function MultiStepForm({
                 {Math.round(progress)}%
               </span>
             </div>
-            <Progress value={progress} className="h-2" />
           </div>
 
           {/* Step indicators */}
