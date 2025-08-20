@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { submitIssueReport } = require('../controller/issueReportController');
+const { verifyToken } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -49,8 +50,8 @@ const validateIssueReport = [
   check('additionalInfo').optional().trim()
 ];
 
-// POST /api/issues/report
-router.post('/report', (req, res, next) => {
+// POST /api/issues/report (protected)
+router.post('/report', verifyToken, (req, res, next) => {
   upload(req, res, function (err) {
     if (err) {
       if (err.code === 'LIMIT_FILE_SIZE') {

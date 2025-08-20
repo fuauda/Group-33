@@ -7,7 +7,7 @@ import { Input } from "../../../../components/ui/input"
 import { Textarea } from "../../../../components/ui/textarea"
 import { Button } from "../../../../components/ui/button"
 import { services, getServiceById, getServiceBySlug } from "../../data"
-import { apiFetch } from "../../../../lib/api"
+import { apiFetch, getAuthToken, clearAuthToken } from "../../../../lib/api"
 
 export default function ReportFormPage() {
   const params = useParams()
@@ -40,6 +40,11 @@ export default function ReportFormPage() {
     setFieldErrors({})
     setSubmitting(true)
     try {
+      if (!getAuthToken()) {
+        setError("Please log in to submit a report.")
+        window.location.href = "/auth/login"
+        return
+      }
       const fd = new FormData()
       fd.append("name", form.name)
       fd.append("email", form.email)
@@ -53,6 +58,12 @@ export default function ReportFormPage() {
 
       const res = await apiFetch("/api/issues/report", { method: "POST", body: fd })
       if (!res.ok) {
+        if (res.status === 401) {
+          clearAuthToken()
+          setError("Your session has expired. Please log in again.")
+          window.location.href = "/auth/login"
+          return
+        }
         const data = await res.json().catch(() => ({}))
         if (Array.isArray(data?.errors)) {
           const fe = {}

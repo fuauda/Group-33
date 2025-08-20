@@ -30,4 +30,31 @@ export async function apiFetch(path, options = {}) {
   return res
 }
 
+export async function getCurrentUser() {
+  try {
+    const res = await apiFetch('/api/auth/me', { method: 'GET' })
+    if (!res.ok) return null
+    const user = await res.json().catch(() => null)
+    return user || null
+  } catch {
+    return null
+  }
+}
+
+export async function logoutRequest() {
+  try {
+    const res = await apiFetch('/api/auth/logout', { method: 'POST' })
+    return res
+  } catch (e) {
+    return null
+  }
+}
+
+export function clearAuthToken() {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.removeItem('token')
+  } catch {}
+}
+
 
