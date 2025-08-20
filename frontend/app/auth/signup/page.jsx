@@ -96,7 +96,7 @@ const SignupPage = () => {
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-3xl p-8 md:p-12">
 
         <div className='w-full space-y-6 sm:max-w-md'>
-          <a className="inline-flex gap-2 text-sm text-muted-foreground hover:text-foreground" href="../auth/login">← Back to Home</a>
+          <a className="inline-flex gap-2 text-sm text-muted-foreground hover:text-foreground" href="../auth/login">← Back to Login</a>
         </div>
 
 
