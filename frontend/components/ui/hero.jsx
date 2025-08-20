@@ -98,12 +98,12 @@ const Navbar = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 lg:min-w-max mt-10 lg:mt-0">
-              <Link
+              {/* <Link
                 href="/discussion#start"
                 className="px-6 py-3 duration-300 ease-linear flex justify-center w-full sm:w-auto border border-emerald-600 text-white bg-emerald-600 hover:bg-emerald-700 rounded-full"
               >
                 Start a Discussion
-              </Link>
+              </Link> */}
               <Dialog>
                 <DialogTrigger asChild></DialogTrigger>
                 <DialogContent className="max-w-xl">
