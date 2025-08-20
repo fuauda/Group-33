@@ -2,13 +2,21 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import { apiFetch } from '../../../lib/api';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   return (
+    <>
+        
     <main className="bg-background flex min-h-screen w-full flex-col items-center justify-center sm:px-4">
+      <div className='w-full space-y-6 sm:max-w-md'>
+          <a className="inline-flex gap-2 text-sm text-muted-foreground hover:text-foreground" href="/">← Back to Home</a>
+        </div>
+      
+         
       <div className="w-full space-y-4 sm:max-w-md">
         <div className="text-center">
           <div className="mt-5 space-y-2">
@@ -178,5 +186,6 @@ export default function LoginPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }
